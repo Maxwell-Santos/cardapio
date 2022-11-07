@@ -1,0 +1,138 @@
+[
+  {
+    "id": 2,
+    "name": "lanches",
+    "content": [
+      {
+        "id": "1l",
+        "name": "X-Burguer",
+        "price": 10.00,
+        "info": "lanche delicioso",
+        "count": 1
+      },
+      {
+        "id": "2l",
+        "name": "X-Salada",
+        "price": 10.00,
+        "info": "lanche delicioso",
+        "count": 1
+      },
+      {
+        "id": "3l",
+        "name": "X-Chicken",
+        "price": 10.00,
+        "info": "lanche delicioso",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "cafe manha",
+    "content": [
+      {
+        "id": "1cm",
+        "name": "Pão na chapa",
+        "price": 3.00,
+        "info": "pãozinho bom",
+        "count": 1
+      },
+      {
+        "id": "2cm",
+        "name": "Café com leite",
+        "price": 3.00,
+        "info": "cafézinho bom",
+        "count": 1
+      },
+      {
+        "id": "3cm",
+        "name": "Pão de queijo",
+        "price": 3.00,
+        "info": "pãozinho de queijo bom",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "bebidas",
+    "content": [
+      {
+        "id": "1b",
+        "name": "Coca-cola",
+        "price": 7.00,
+        "info": "Coca boa demais",
+        "count": 1
+      },
+      {
+        "id": "2b",
+        "name": "Sprite",
+        "price": 5.00,
+        "info": "Sprite bom demais",
+        "count": 1
+      },
+      {
+        "id": "3b",
+        "name": "Dolly",
+        "price": 4.00,
+        "info": "Dolly bom demais",
+        "count": 1
+      },
+      {
+        "id": "4b",
+        "name": "Fanta Uva",
+        "price": 6.00,
+        "info": "Fanta uva bom demais",
+        "count": 1
+      },
+      {
+        "id": "5b",
+        "name": "Fanta Laranja",
+        "price": 6.00,
+        "info": "Fanta laranja bom demais",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "sobremesas",
+    "content": [
+      {
+        "id": "1s",
+        "name": "Torta de morango",
+        "price": 9.00,
+        "info": "Ai que torta de morango sensacional bicho, ave maria",
+        "count": 1
+      },
+      {
+        "id": "2s",
+        "name": "Torta de Limão",
+        "price": 9.00,
+        "info": "Ai que torta de limão sensacional bicho, ave maria",
+        "count": 1
+      },
+      {
+        "id": "3s",
+        "name": "Macarron",
+        "price": 5.00,
+        "info": "Esse é meio carinho mas é uma delícia também",
+        "count": 1
+      },
+      {
+        "id": "4s",
+        "name": "Sonho",
+        "price": 3.00,
+        "info": "Literalmente um sonho, bom e barato",
+        "count": 1
+      },
+      {
+        "id": "5s",
+        "name": "Carolina",
+        "price": 6.00,
+        "info": "Esse aqui é meu preferido, não tem como...",
+        "count": 1
+      }
+    ]
+  }
+]

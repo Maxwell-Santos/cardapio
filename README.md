@@ -1,34 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Como funciona as trocas de telas
 
-## Getting Started
+Basicamente usei um componente do Material UI porém eu peguei um deles sem estilização já que era muito diferente do que eu queria para o projeto final
 
-First, run the development server:
+</ br>
 
-```bash
-npm run dev
-# or
-yarn dev
+Bom, a mudança da barrinha indicadora, já vem do material, mas ela não avisa em lugar nenhum, ela não tem nenhuma âncora com as telas, apenas muda de acordo que eu clico ou arrasto a tela
+
+</ br>
+
+Para sincronizar isso e fazer com que o titulo da seção mostrasse que ele era o atual, deu um trabalhinho... mas nada que com documentação e eum pouco de pensar, não resolva
+
+</ br>
+
+
+ - Primeiro criei esse novo atributo com valores numéricos semelhantes a index de array, o <code>aria-colindex</code>
+
+```tsx
+<Tabs
+  value={value} //seção 
+  onChange={handleChange}
+  className="flex items-center justify-center border-none px-2"
+>
+  <TabUnstyled className="tab" aria-colindex={0}>
+    Todos
+  </TabUnstyled>
+</Tabs>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  - Daí, ja dei até um spoiler do que eeu fiz... sempre que arrasta a tela para trocar seção, dispara um callback que tem como parâmetro justamente a posição do index daquela seção
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```tsx  
+<SwipeableViews
+  index={value} //mostra a seção atual com base no index
+  onChangeIndex={handleChangeIndex} //callback que dispara ao arrastar a tela para o lado, ele tem como parâmetro o index próximo TabPanel
+>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+  <TabPanel value={value} index={0}>
+    {
+      items.map(item => {
+        return item.name == "todos" && (
+          item.content.map(contentItem => <Card item={contentItem} />)
+        )
+      })
+    }
+  </TabPanel>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+</SwipeableViews>
+```
 
-## Learn More
+ - Sempre que muda a seção (clicando no nome dela, não arrastando para o lado) também altera uma propriedade naquela tag que envolve o titulo, o <code>aria-selected</code>
 
-To learn more about Next.js, take a look at the following resources:
+ - Sabendo disso, fiz o seguinte código:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+export function Navigation() {
+  const [value, setValue] = useState(0); // essa é a variável que é usada para comparar e definir qual a seção atual
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  //muda a cor do titulo da seção atual
+  function activeNav() {
+    const tabsElement = document.querySelectorAll('.tab')
+    const tabs = Array.from(tabsElement)
 
-## Deploy on Vercel
+    tabs.map(tab => tab.ariaSelected == "true" && tab.classList.add("text-nav-active"))
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  }
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue)
+  }
+
+  const handleChangeIndex = (index: number) => {
+    setValue(index);
+
+    const tabsElement = document.querySelectorAll('.tab')
+    const tabs = Array.from(tabsElement)
+
+    tabs.map(tab => Number(tab.ariaColIndex) == index ? tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
+
+  };
+
+  useEffect(() => {
+    activeNav()
+    handleChangeIndex(value)
+
+  }, [value])
+```
+
