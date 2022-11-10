@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useMemo } from "react"
+import { useContext, useMemo } from "react"
 import { ItemRequested } from "../components/Card/ItemRequested"
 import { CartContext } from "../context/CartContext"
 import { ItemProps } from "../interfaces/ItemProps"
@@ -10,26 +10,22 @@ export default function Requests() {
 
   const { cart, getTotal, total } = useContext(CartContext)
 
-  /**
-   * life cycle of component: Sempre que um estado é mudado o componente é re-renderizado
-   * logo, quando o cart.length mudar, o componente irá fazer outro map por ele
-   * */
-
   useMemo(() => {
     getTotal()
   }, [total, cart])
+
   return (
     <div
-      className="flex w-full justify-center flex-col"
+      className="flex w-full justify-center flex-col mt-[40px]"
     >
       <IconButton
-        className="m-5 block w-fit aspect-square cursor-pointer p-0"
+        className="back-button top-0 mr-0"
         onClick={() => history.back()}
       >
         <ArrowBackIosRoundedIcon fontSize="small" />
       </IconButton>
       <div
-        className="w-full px-5 flex flex-col items-center justify-between min-h-[80vh]"
+        className="w-full px-5 flex flex-col items-center justify-between min-h-[100vh]"
       >
         {
           cart.length != 0 ? (
@@ -44,8 +40,12 @@ export default function Requests() {
               <span>Total: R$ {total},00</span>
             </>
           ) : (
-            <h1 className="inline-block my-auto text-6xl opacity-50">
-              <RemoveShoppingCartRoundedIcon fontSize="inherit" /></h1>
+            <span className="block my-auto text-6xl icon text-center">
+              <RemoveShoppingCartRoundedIcon fontSize="inherit"/>
+              <span
+              className="text-base block border"
+              >Vazio</span>
+              </span>
           )
         }
       </div>

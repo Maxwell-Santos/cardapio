@@ -4,4 +4,5 @@ export interface ItemProps {
   price: number;
   info?: string;
   count: number;
+  img?: string;
 }

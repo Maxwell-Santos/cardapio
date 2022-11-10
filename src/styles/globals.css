@@ -11,13 +11,24 @@
     @apply font-Fraunces text-title text-black/40
   }
 
-  p{
+  p {
     @apply font-Inter text-item-description text-description
+  }
+
+  img {
+  @apply w-full h-full object-cover
   }
 }
 
 @layer components{
   .tab{
-    @apply text-nav capitalize mx-3
+    @apply text-nav capitalize mx-2
+  }
+  .icon{
+  @apply opacity-20 text-icon
+  }
+  .back-button{
+  @apply m-3 aspect-square cursor-pointer p-2 fixed rounded-full bg-primary/30 backdrop-blur-sm shadow-sm
+
   }
 }

@@ -58,34 +58,34 @@ export function Navigation() {
           aria-label="full-width tabs example"
           scrollButtons={false}
           onChange={handleChange}
-          className="flex items-center"
+          className="flex items-center px-2"
         >
           <TabUnstyled className="tab" aria-colindex={0}>
             Todos
           </TabUnstyled>
 
           <TabUnstyled className="tab" aria-colindex={1}>
-            Lanches
-          </TabUnstyled>
-
-          <TabUnstyled className="tab" aria-colindex={2}>
             Café da manhã
           </TabUnstyled>
 
+          <TabUnstyled className="tab" aria-colindex={2}>
+            Lanches
+          </TabUnstyled>
+          
           <TabUnstyled className="tab" aria-colindex={3}>
-            Bebidas
+            Sobremesas
           </TabUnstyled>
 
           <TabUnstyled className="tab" aria-colindex={4}>
-            Sobremesas
+            Bebidas
           </TabUnstyled>
         </Tabs>
 
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          className="overflow-x-visible"
+          className="px-2"
           index={value}
-          // animateTransitions
+          animateTransitions
           onChangeIndex={handleChangeIndex}
           resistance
         >
@@ -106,14 +106,14 @@ export function Navigation() {
               }
               {
                 data.map((section: SectionProps) => {
-                  return section.name == "bebidas" && (
+                  return section.name == "sobremesas" && (
                     section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                   )
                 })
               }
               {
                 data.map((section: SectionProps) => {
-                  return section.name == "sobremesas" && (
+                  return section.name == "bebidas" && (
                     section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                   )
                 })
@@ -123,7 +123,7 @@ export function Navigation() {
           <TabPanel value={value} index={1}>
             {
               data.map((section: SectionProps) => {
-                return section.name == "lanches" && (
+                return section.name == "cafe manha" && (
                   section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                 )
               })
@@ -133,7 +133,7 @@ export function Navigation() {
           <TabPanel value={value} index={2}>
             {
               data.map((section: SectionProps) => {
-                return section.name == "cafe manha" && (
+                return section.name == "lanches" && (
                   section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                 )
               })
@@ -143,7 +143,7 @@ export function Navigation() {
           <TabPanel value={value} index={3}>
             {
               data.map((section: SectionProps) => {
-                return section.name == "bebidas" && (
+                return section.name == "sobremesas" && (
                   section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                 )
               })
@@ -153,7 +153,7 @@ export function Navigation() {
           <TabPanel value={value} index={4}>
             {
               data.map((section: SectionProps) => {
-                return section.name == "sobremesas" && (
+                return section.name == "bebidas" && (
                   section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
                 )
               })

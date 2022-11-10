@@ -6,24 +6,26 @@
       {
         "id": "1l",
         "name": "X-Burguer",
-        "img" : "",
         "price": 10.00,
         "info": "lanche delicioso",
-        "count": 1
+        "count": 1,
+        "img" : "https://hridiomas.com.br/wp-content/uploads/destaque-321.jpg"
       },
       {
         "id": "2l",
         "name": "X-Salada",
         "price": 10.00,
         "info": "lanche delicioso",
-        "count": 1
+        "count": 1,
+        "img": "https://i.pinimg.com/originals/41/14/28/411428a3c234400471acdae7535bc14e.jpg"
       },
       {
         "id": "3l",
         "name": "X-Chicken",
         "price": 10.00,
         "info": "lanche delicioso",
-        "count": 1
+        "count": 1,
+        "img": "https://brtakeout.com/wp-content/uploads/x-chicken.png"
       }
     ]
   },
@@ -36,21 +38,24 @@
         "name": "Pão na chapa",
         "price": 3.00,
         "info": "pãozinho bom",
-        "count": 1
+        "count": 1,
+        "img": "https://riomarfortalezaonline.com.br/fortalezashopping/2022/04/pao-na-chapa.png"
       },
       {
         "id": "2cm",
         "name": "Café com leite",
         "price": 3.00,
         "info": "cafézinho bom",
-        "count": 1
+        "count": 1,
+        "img": "https://tudodereceitas.com.br/wp-content/uploads/2022/08/Cafe-com-leite-cremoso.jpg"
       },
       {
         "id": "3cm",
         "name": "Pão de queijo",
         "price": 3.00,
         "info": "pãozinho de queijo bom",
-        "count": 1
+        "count": 1,
+        "img": "https://essareceitafunciona.com.br/wp-content/uploads/2022/07/Pao-de-queijo-Essa-Receita-Funciona-9.jpg"
       }
     ]
   },
@@ -63,35 +68,40 @@
         "name": "Coca-cola",
         "price": 7.00,
         "info": "Coca boa demais",
-        "count": 1
+        "count": 1,
+        "img": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/1984-refrigerante-coca-cola-lata-350ml.jpg"
       },
       {
         "id": "2b",
         "name": "Sprite",
         "price": 5.00,
         "info": "Sprite bom demais",
-        "count": 1
+        "count": 1,
+        "img": "https://www.drogariaminasbrasil.com.br/media/product/61d/refrigerante-sprite-lata-350ml-123.jpg"
       },
       {
         "id": "3b",
         "name": "Dolly",
         "price": 4.00,
         "info": "Dolly bom demais",
-        "count": 1
+        "count": 1,
+        "img": "https://a-static.mlcdn.com.br/1500x1500/dolly-guarana-2l/adegareisdeouro/e6a185a864c911ecb4f84201ac18503a/ea6ba86711b2ae90de185e0022e8ca09.jpeg"
       },
       {
         "id": "4b",
         "name": "Fanta Uva",
         "price": 6.00,
         "info": "Fanta uva bom demais",
-        "count": 1
+        "count": 1,
+        "img": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/1905-refrigerante-fanta-uva-lata-220ml.jpg"
       },
       {
         "id": "5b",
         "name": "Fanta Laranja",
         "price": 6.00,
         "info": "Fanta laranja bom demais",
-        "count": 1
+        "count": 1,
+        "img": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/1993-refrigerante-fanta-laranja-lata-350ml.jpg"
       }
     ]
   },
@@ -104,35 +114,40 @@
         "name": "Torta de morango",
         "price": 9.00,
         "info": "Ai que torta de morango sensacional bicho, ave maria",
-        "count": 1
+        "count": 1,
+        "img": "https://www.sabornamesa.com.br/media/k2/items/cache/d4ece76a0fc75091c09eca5036691827_XL.jpg"
       },
       {
         "id": "2s",
         "name": "Torta de Limão",
         "price": 9.00,
         "info": "Ai que torta de limão sensacional bicho, ave maria",
-        "count": 1
+        "count": 1,
+        "img": "https://images.aws.nestle.recipes/resized/40b25559b85b265e885f55ec7c1e4d04_torta-lim%C3%A3o-receitas-nestle_1200_600.jpg"
       },
       {
         "id": "3s",
         "name": "Macarron",
         "price": 5.00,
         "info": "Esse é meio carinho mas é uma delícia também",
-        "count": 1
+        "count": 1,
+        "img": "https://img.itdg.com.br/tdg/images/recipes/000/127/330/275301/275301_original.jpg?w=1200"
       },
       {
         "id": "4s",
         "name": "Sonho",
         "price": 3.00,
         "info": "Literalmente um sonho, bom e barato",
-        "count": 1
+        "count": 1,
+        "img": "https://i.ytimg.com/vi/2GfuP-UIXig/maxresdefault.jpg"
       },
       {
         "id": "5s",
         "name": "Carolina",
         "price": 6.00,
         "info": "Esse aqui é meu preferido, não tem como...",
-        "count": 1
+        "count": 1,
+        "img": "https://cooknenjoy.com/wp-content/uploads/2017/08/P1110298.jpg"
       }
     ]
   }

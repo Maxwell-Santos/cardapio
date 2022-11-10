@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { useContext, useMemo, useState } from "react"
 import { CartContext } from "../../context/CartContext"
@@ -22,17 +23,26 @@ export function Card({ sectionId, item }: CardProps) {
     className={`${existsItem && "pointer-events-none"}`}
     >
       <div
-        className={`w-full p-4 rounded-md flex my-2 transition-all duration-400
-      ${existsItem ? "bg-[#ffd6c4]" : "bg-item-card hover:shadow-lg"}
+        className={`w-full rounded-md flex gap-5 my-2 transition-all overflow-hidden border-black h-28 
+      ${existsItem ? "bg-disable" : "bg-item-card shadow-sm"}
       `}
       >
-        <div className="flex flex-col">
+        <div
+        className="w-[7rem] h-full"
+        >
+          <img 
+          src={item.img || item.name}
+          alt={`imagem ${item.name}`}
+          />
+        </div>
+        
+        <div className="flex flex-col flex-1 justify-center p-1">
           <h2
             className="text-subtitle"
           >
             {item.name}
           </h2>
-          <p>
+          <p className="opacity-80 line-clamp-2 leading-snug">
             {item.info}
           </p>
           <span

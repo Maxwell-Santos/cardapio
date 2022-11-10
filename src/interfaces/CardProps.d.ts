@@ -5,5 +5,6 @@ export interface CardProps {
     name: string,
     price: number,
     info?: string,
+    img?: string,
   }
 }

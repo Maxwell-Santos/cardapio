@@ -29,11 +29,14 @@ module.exports = {
         'item-description': '#000000cc', // 80%
         'item-price': '#A64B2A',
         'button-primary': '#fff',
+        'icon': '#8E3200'
       },
 
       backgroundColor: {
         'primary': '#FFF0CF',
+        'disable': '#8e32002d',
         'button-primary': '#8E3200',
+        'button-primary-disable': '#8e32008f',
         'button-primary-onclick': '#81350b',
         'item-card': '#ffffff4d' // 30%
       },
@@ -44,5 +47,7 @@ module.exports = {
 
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

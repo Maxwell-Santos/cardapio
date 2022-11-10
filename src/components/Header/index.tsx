@@ -9,11 +9,11 @@ export function Header() {
 
   return (
     <header
-      className="w-full p-7 
+      className="w-full p-5
       flex items-center justify-between"
     >
       <h1
-        className="text-item-description inline"
+        className="text-icon opacity-50"
       >
         Panificadora
       </h1>
@@ -24,7 +24,9 @@ export function Header() {
         badgeContent={cart.length}
         color="primary"
         >
-          <ShoppingCartIcon />
+          <ShoppingCartIcon 
+          className="icon"
+          />
         </Badge>
       </Link>
     </header>
