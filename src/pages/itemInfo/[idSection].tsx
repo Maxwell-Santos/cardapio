@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import { CartContext } from "../../context/CartContext";
 import { CartContextProps } from "../../interfaces/CartContextProps";
 import { ItemProps } from '../../interfaces/ItemProps';
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 export default function ItemInfo() {
   const { query } = useRouter()
@@ -14,7 +17,10 @@ export default function ItemInfo() {
   const {
     findSection,
     findItem,
-    AddToCart
+    addToCart,
+    getTotal,
+    reduction,
+    increase
   } = useContext<CartContextProps>(CartContext)
 
   const section = findSection(Number(idSection))
@@ -23,17 +29,15 @@ export default function ItemInfo() {
     const i = findItem(section.content, String(id))
     setFoundedItem(i)
   }, [])
-  
-  console.log(foundedItem)
 
   function moreOne() {
     foundedItem && setQuantity(foundedItem.count++)
   }
-  
+
   function lessOne() {
     if (quantity && quantity >= 0) {
       foundedItem && setQuantity(foundedItem.count--)
-
+      getTotal()
     } else {
       alert("Ja não tem nenhum item selecionado")
     }
@@ -46,7 +50,13 @@ export default function ItemInfo() {
       flex-1 p-5
       flex flex-col justify-between
       ">
-        <Link href={"/"}>Back</Link>
+        <IconButton
+          className="block w-fit aspect-square cursor-pointer p-0"
+          onClick={() => history.back()}
+        >
+          <ArrowBackIosRoundedIcon fontSize="small" />
+        </IconButton>
+        
         {
           foundedItem ? (
             <>
@@ -86,9 +96,18 @@ export default function ItemInfo() {
                 </div>
 
                 <button
-                  className="rounded-xl text-button-primary bg-button-primary p-3 px-3 font-Fraunces tracking-wide flex-1"
-                  onClick={() => AddToCart(Number(idSection), String(id))}
+                  className="rounded-xl p-3 px-3 font-Fraunces tracking-wide
+                  text-button-primary bg-button-primary transition-all
+                  flex-1 flex items-center justify-center gap-5
+                  hover:bg-button-primary-onclick 
+                  hover:-translate-y-2"
+                  onClick={() => {
+                    addToCart(Number(idSection), String(id))
+                    history.back()
+                  }}
+
                 >
+                  <AddShoppingCartRoundedIcon />
                   Adicionar Pedido
                 </button>
               </div>

@@ -1,34 +1,47 @@
 import Link from "next/link"
-import { useContext } from "react"
+import { useContext, useMemo, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { CardProps } from "../../interfaces/CardProps"
-import { CartContextProps } from "../../interfaces/CartContextProps"
+import { ItemProps } from "../../interfaces/ItemProps"
 
-export function Card({sectionId, item}: CardProps) {
+export function Card({ sectionId, item }: CardProps) {
 
-  const { AddToCart } = useContext<CartContextProps>(CartContext)
+  const [existsItem, setExisistItem] = useState(false)
+  const { cart } = useContext(CartContext)
 
+  useMemo(() => {
+    cart.map((itemInCart: ItemProps) => {
+
+      if (item.id === itemInCart.id) {
+        setExisistItem(true)
+      }
+    })
+  }, [item])
   return (
-    <div
-      className="w-full p-4 rounded-md bg-item-card flex my-2" 
+    <Link href={`/itemInfo/${sectionId}?id=${item.id}`}
+    className={`${existsItem && "pointer-events-none"}`}
     >
-      <Link href={`/itemInfo/${sectionId}?id=${item.id}`}>
+      <div
+        className={`w-full p-4 rounded-md flex my-2 transition-all duration-400
+      ${existsItem ? "bg-[#ffd6c4]" : "bg-item-card hover:shadow-lg"}
+      `}
+      >
         <div className="flex flex-col">
           <h2
-          className="text-subtitle"
+            className="text-subtitle"
           >
-          {item.name}
+            {item.name}
           </h2>
           <p>
             {item.info}
           </p>
           <span
-          className="text-item-price"
+            className="text-item-price"
           >
             R${item.price},00
           </span>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   )
 }

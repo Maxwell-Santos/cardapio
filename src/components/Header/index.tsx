@@ -1,4 +1,11 @@
+import { Badge } from "@mui/material";
+import Link from "next/link";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 export function Header() {
+
+  const { cart } = useContext(CartContext)
 
   return (
     <header
@@ -7,10 +14,19 @@ export function Header() {
     >
       <h1
         className="text-item-description inline"
-      >Panificadora
+      >
+        Panificadora
       </h1>
 
-      <span>cesta</span>
+      <Link href={"/requests"}>
+
+        <Badge 
+        badgeContent={cart.length}
+        color="primary"
+        >
+          <ShoppingCartIcon />
+        </Badge>
+      </Link>
     </header>
   )
 }

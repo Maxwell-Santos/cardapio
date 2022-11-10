@@ -6,6 +6,7 @@
       {
         "id": "1l",
         "name": "X-Burguer",
+        "img" : "",
         "price": 10.00,
         "info": "lanche delicioso",
         "count": 1

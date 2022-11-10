@@ -34,6 +34,7 @@ module.exports = {
       backgroundColor: {
         'primary': '#FFF0CF',
         'button-primary': '#8E3200',
+        'button-primary-onclick': '#81350b',
         'item-card': '#ffffff4d' // 30%
       },
 

@@ -4,10 +4,12 @@ export interface CartContextProps {
   data: [];
   cart: any;
   setCart: Dispatch<SetStateAction<ItemProps[]>>;
-  AddToCart: (sectionId: number, productId: string) => void;
-  RemoveFromCart: (id: string) => void;
+  addToCart: (sectionId: number, productId: string) => void;
+  removeFromCart: (id: string) => void;
 
   findSection: (sectionId:number) => SectionProps;
   findItem: (products: any, productId: string) => ItemProps;
-  
+  getTotal: () => number;
+  reduction: (id: string) => void;
+  increase: (id: string) => void;
 }

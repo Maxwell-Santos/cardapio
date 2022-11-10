@@ -7,8 +7,8 @@ export const CartContext = createContext<any>([])
 
 export function CartProvider({ children }: any) {
   const data = dataItems
-
   const [cart, setCart] = useState<ItemProps[]>([])
+  const [total, setTotal] = useState(0)
 
   const findSection = (sectionId: number): SectionProps => {
     let SECTION: SectionProps = {
@@ -23,13 +23,10 @@ export function CartProvider({ children }: any) {
           SECTION.id = section.id
           SECTION.name = section.name
           SECTION.content = section.content
-
-          console.log("achou", section)
         }
       } catch (error) {
         console.log("item não encontrado", error)
       }
-
     })
 
     return SECTION
@@ -41,7 +38,7 @@ export function CartProvider({ children }: any) {
     return itemFounded
   }
 
-  const AddToCart = (sectionId: number, productId: string) => {
+  const addToCart = (sectionId: number, productId: string) => {
     const section = findSection(sectionId) //procurar a seção
 
     //checando se o produto ja existe no carrinho
@@ -52,40 +49,86 @@ export function CartProvider({ children }: any) {
     })
 
     if (check) {
-      const data = section.content.filter(product =>{
+      const data = section.content.filter(product => {
         return product.id === productId
-    })
+      })
       setCart(prev => [...prev, ...data])
 
     } else {
       alert("O Produto já foi adicionado ao carrinho.")
     }
   }
-  console.log("meu carrinho",cart)
 
-  const RemoveFromCart = (id: string) => {
+  const removeFromCart = (id?: string) => {
     cart.map((product: ItemProps, index) => {
       if (product.id == id) {
-        cart.splice(index, 1)
+        const response = confirm("Deseja remover esse item da sua lista?")
+        if (response){
+          product.count = 1
+          cart.splice(index, 1)
+          console.log("de dentro da fn remover",cart)
+        }
       }
     })
+    getTotal()
   }
 
-  // const GetTotal = () => {
-  //   const total = cart.reduce((prev, item) => prev.price + (item.price * item.count))
-  //   return total
-  // }
+  const increase = (id: string) => {
+    let quantityItem = 1
+
+    cart.forEach(item => {
+      if (item.id === id) {
+        item.count += 1
+        quantityItem = item.count
+      }
+    })
+    getTotal()
+    return quantityItem
+  }
+
+
+  const reduction = (id: string) => {
+    let quantityItem = 1
+
+    cart.forEach(item => {
+
+      if (item.id == id) {
+        if (item.count == 1) {
+          removeFromCart(item.id)
+
+        } else {
+          item.count -= 1
+        }
+        quantityItem = item.count
+      }
+    })
+    getTotal()
+
+    return quantityItem
+  }
+
+  const getTotal = () => {
+    const res = cart.reduce((prev: any, item: ItemProps) => {
+      return prev + (item.price * item.count)
+    }, 0)
+  
+    setTotal(res)
+  }
 
   return (
     <CartContext.Provider value={{
       data,
       cart,
       setCart,
-      AddToCart,
-      RemoveFromCart,
+      addToCart,
+      removeFromCart,
+      getTotal,
+      total,
 
       findSection,
       findItem,
+      reduction,
+      increase
     }}>
 
       {children}

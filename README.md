@@ -2,15 +2,15 @@
 
 Basicamente usei um componente do Material UI porém eu peguei um deles sem estilização já que era muito diferente do que eu queria para o projeto final
 
-</ br>
+</br>
 
 Bom, a mudança da barrinha indicadora, já vem do material, mas ela não avisa em lugar nenhum, ela não tem nenhuma âncora com as telas, apenas muda de acordo que eu clico ou arrasto a tela
 
-</ br>
+</br>
 
 Para sincronizar isso e fazer com que o titulo da seção mostrasse que ele era o atual, deu um trabalhinho... mas nada que com documentação e eum pouco de pensar, não resolva
 
-</ br>
+</br>
 
 
  - Primeiro criei esse novo atributo com valores numéricos semelhantes a index de array, o <code>aria-colindex</code>
