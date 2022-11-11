@@ -18,12 +18,12 @@ export default function Requests() {
     <div
       className="flex w-full justify-center flex-col mt-[40px]"
     >
-      <IconButton
+      <button
         className="back-button top-0 mr-0"
         onClick={() => history.back()}
       >
         <ArrowBackIosRoundedIcon fontSize="small" />
-      </IconButton>
+      </button>
       <div
         className="w-full px-5 flex flex-col items-center justify-between min-h-[100vh]"
       >

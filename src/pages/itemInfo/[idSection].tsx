@@ -60,12 +60,12 @@ export default function ItemInfo() {
       flex-1 pb-5
       flex flex-col relative
       ">
-        <IconButton
+        <button
           className="back-button absolute"
           onClick={() => history.back()}
         >
           <ArrowBackIosRoundedIcon fontSize="small" />
-        </IconButton>
+        </button>
 
         {
           foundedItem ? (
