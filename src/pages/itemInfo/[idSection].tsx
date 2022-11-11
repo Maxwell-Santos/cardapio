@@ -61,7 +61,7 @@ export default function ItemInfo() {
       flex flex-col relative
       ">
         <IconButton
-          className="back-button"
+          className="back-button absolute"
           onClick={() => history.back()}
         >
           <ArrowBackIosRoundedIcon fontSize="small" />
