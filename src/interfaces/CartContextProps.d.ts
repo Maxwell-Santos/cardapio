@@ -5,6 +5,7 @@ export interface CartContextProps {
   cart: any;
   setCart: Dispatch<SetStateAction<ItemProps[]>>;
   addToCart: (sectionId: number, productId: string) => void;
+  cleanCart: () => void;
   removeFromCart: (id: string) => void;
 
   findSection: (sectionId:number) => SectionProps;

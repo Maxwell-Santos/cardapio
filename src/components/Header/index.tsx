@@ -15,17 +15,20 @@ export function Header() {
       <h1
         className="text-icon opacity-50"
       >
-        Panificadora
+        <Link
+        href="/administration"
+        >
+          Panificadora
+        </Link>
       </h1>
 
       <Link href={"/requests"}>
-
-        <Badge 
-        badgeContent={cart.length}
-        color="primary"
+        <Badge
+          badgeContent={cart.length}
+          color="primary"
         >
-          <ShoppingCartIcon 
-          className="icon"
+          <ShoppingCartIcon
+            className="icon"
           />
         </Badge>
       </Link>

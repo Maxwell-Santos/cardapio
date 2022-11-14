@@ -28,7 +28,7 @@ export function CartProvider({ children }: any) {
         console.log("item não encontrado", error)
       }
     })
-
+    
     return SECTION
   }
 
@@ -53,10 +53,16 @@ export function CartProvider({ children }: any) {
         return product.id === productId
       })
       setCart(prev => [...prev, ...data])
-
-    } else {
-      alert("O Produto já foi adicionado ao carrinho.")
     }
+  }
+
+  const cleanCart = () => {
+
+    cart.forEach((item: any) => {
+      item.count = 1
+    })
+
+    setCart(prevStateCart => prevStateCart = [])
   }
 
   const removeFromCart = (id?: string) => {
@@ -121,6 +127,7 @@ export function CartProvider({ children }: any) {
       cart,
       setCart,
       addToCart,
+      cleanCart,
       removeFromCart,
       getTotal,
       total,

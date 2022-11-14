@@ -31,31 +31,30 @@ export function ItemRequested({
 
   return (
     <li
-      className="w-full max-w-[500px] p-3
-     flex items-center justify-between 
+      className="w-full max-w-[500px] py-4
+     flex items-center justify-between flex-wrap
      border-b border-request-list"
     >
 
-      <div className="">
+      <div className="flex-1">
         <h2
-          className="text-2xl"
+          className="text-2xl leading-tight"
         >
           {name}
         </h2>
-        <p>{info}</p>
         <span
           className="font-Fraunces"
         >R${price},00</span>
       </div>
 
-      <div className="flex items-center justify-center gap-2 text-lg ml-auto mr-5">
+      <div className="flex items-center justify-center gap-2 text-lg ml-auto mr-2 sm:mr-5">
 
         <button
           onClick={() => handleQuantity(reduction(id))}
           className="p-2 bg-button-primary rounded-full text-button-primary"
         >-</button>
 
-        <div className="w-5 text-center">
+        <div className="w-2 sm:w-5 text-center">
           <span>
             {count}
           </span>

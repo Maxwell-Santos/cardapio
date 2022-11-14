@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { useContext, useMemo, useState } from "react"
 import { CartContext } from "../../context/CartContext"
@@ -18,17 +17,18 @@ export function Card({ sectionId, item }: CardProps) {
       }
     })
   }, [item])
+
   return (
     <Link href={`/itemInfo/${sectionId}?id=${item.id}`}
-    className={`${existsItem && "pointer-events-none"}`}
+    // className={`${existsItem && "pointer-events-none"}`}
     >
       <div
         className={`w-full rounded-md flex gap-5 my-2 transition-all overflow-hidden border-black h-28 
-      ${existsItem ? "bg-disable" : "bg-item-card shadow-sm"}
+      ${existsItem ? "bg-disable" : "bg-item-card shadow-sm md:hover:shadow-lg"}
       `}
       >
         <div
-        className="w-[7rem] h-full"
+        className="w-[7rem] md:w-[10rem] h-full"
         >
           <img 
           src={item.img || item.name}
@@ -48,7 +48,13 @@ export function Card({ sectionId, item }: CardProps) {
           <span
             className="text-item-price"
           >
-            R${item.price},00
+            R${item.price},00 
+
+            <sup
+            className={`${item.count >= 1 && existsItem ? "inline ml-2" : "hidden"}`}
+            >
+              X{item.count}
+            </sup>
           </span>
         </div>
       </div>

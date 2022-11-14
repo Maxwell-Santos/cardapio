@@ -6,5 +6,6 @@ export interface CardProps {
     price: number,
     info?: string,
     img?: string,
+    count: number,
   }
 }

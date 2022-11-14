@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import { CartContext } from "../../context/CartContext";
 import { CartContextProps } from "../../interfaces/CartContextProps";
 import { ItemProps } from '../../interfaces/ItemProps';
@@ -19,29 +18,42 @@ export default function ItemInfo() {
     findItem,
     addToCart,
     getTotal,
-    reduction,
-    increase
+    cart,
   } = useContext<CartContextProps>(CartContext)
 
-  const section = findSection(Number(idSection))
+
+  const findItemOutOfCart = () => {
+    const section = findSection(Number(idSection))
+    const ItemOutOfCart = findItem(section.content, String(id))
+    setFoundedItem(ItemOutOfCart)
+  }
 
   useEffect(() => {
-    const i = findItem(section.content, String(id))
-    setFoundedItem(i)
+    const itemInCart = cart.some((item: any) => item.id === id) //true ou false
+
+    if(itemInCart){
+      cart.find((item:any) => item.id == id && setFoundedItem(item))
+      console.log("de dentro do carrinho", cart)
+      
+    } else {
+      console.log("de fora do carrinho", cart)
+      findItemOutOfCart()
+    }
+
   }, [])
 
   function moreOne() {
     foundedItem && setQuantity(foundedItem.count++)
     console.log(quantity)
     console.log(foundedItem)
-    
+
   }
-  
+
   function lessOne() {
-    if (quantity && quantity >= 1) {
+    if (quantity && quantity > 0) {
       foundedItem && setQuantity(foundedItem.count--)
       getTotal()
-      
+
     } else {
       if(foundedItem){
         setQuantity(foundedItem.count = 1)
@@ -54,7 +66,7 @@ export default function ItemInfo() {
   }
 
   return (
-    <div className="w-screen min-h-screen flex justify-center">
+    <div className="w-screen h-screen flex justify-center">
       <div
         className="w-full max-w-[500px] 
       flex-1 pb-5
@@ -70,16 +82,16 @@ export default function ItemInfo() {
         {
           foundedItem ? (
             <>
-                <div
-                  className="aspect-square w-full h-[50%] max-h-[300px] object-cover rounded-b-xl overflow-hidden"
-                >
-                  <img
-                    src={foundedItem.img || foundedItem.name}
-                    alt={`imagem ${foundedItem.name}`}
-                  />
-                </div>
+              <div
+                className="aspect-square w-full h-[50%] max-h-[400px] object-cover rounded-b-3xl overflow-hidden"
+              >
+                <img
+                  src={foundedItem.img || foundedItem.name}
+                  alt={`imagem ${foundedItem.name}`}
+                />
+              </div>
 
-              <div className="mt-auto px-3">
+              <div className="mt-10 px-3">
                 <h1>
                   {foundedItem.name}
                 </h1>
@@ -101,9 +113,9 @@ export default function ItemInfo() {
 
                   <button
                     onClick={lessOne}
-                    className={`${quantity && quantity <= 0 ? 
-                      "bg-button-primary-disable pointer-events-none ": 
-                      "bg-button-primary" }
+                    className={`${quantity && quantity <= 0 ?
+                      "bg-button-primary-disable pointer-events-none " :
+                      "bg-button-primary"}
                       p-2 rounded-full text-button-primary`}
                   >-</button>
 
@@ -118,18 +130,15 @@ export default function ItemInfo() {
                 </div>
 
                 <button
-                  className="rounded-xl p-3 px-3 font-Fraunces tracking-wide
-                  text-button-primary bg-button-primary transition-all
-                  flex-1 flex items-center justify-center
-                  hover:bg-button-primary-onclick"
+                  className="button"
                   onClick={() => {
                     addToCart(Number(idSection), String(id))
                     history.back()
                   }}
 
                 >
+                  Adicionar
                   <AddShoppingCartRoundedIcon />
-                  Adicionar Pedido
                 </button>
               </div>
             </>
