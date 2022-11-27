@@ -38,6 +38,7 @@ module.exports = {
         'disable': '#8e32002d',
         'button-primary': '#8E3200',
         'button-primary-disable': '#8e32008f',
+        'date': '#8e32008f',
         'button-primary-onclick': '#81350b',
         'item-card': '#ffffff4d' // 30%
       },

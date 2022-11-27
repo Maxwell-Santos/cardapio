@@ -32,14 +32,14 @@ export function Navigation() {
     setValue(newValue)
   }
 
-  const handleChangeIndex:any = (index: number) => {
+  const handleChangeIndex: any = (index: number) => {
     setValue(index);
 
     const tabsElement = document.querySelectorAll('.tab')
     const tabs = Array.from(tabsElement)
 
     tabs.map(tab => Number(tab.ariaColIndex) == index ? tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
-  } 
+  }
 
   useEffect(() => {
     activeNav()

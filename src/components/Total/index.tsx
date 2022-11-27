@@ -5,45 +5,53 @@ import { CartContext } from "../../context/CartContext"
 import { useRouter } from "next/router"
 import { order } from "../../utils/Orders"
 
-interface TotalProps{
+interface TotalProps {
   inRequests?: boolean
 }
 
-export function Total({inRequests}: TotalProps) {
+export function Total({ inRequests }: TotalProps) {
   const router = useRouter()
   const { cart, total, getTotal, cleanCart } = useContext(CartContext)
 
   const [enableLink, setEnableLink] = useState(false)
   const [loading, setLoading] = useState(false)
-  
+
   useMemo(() => {
     getTotal()
   }, [total, cart])
 
+
   useMemo(() => {
     total > 0 ? setEnableLink(true) : setEnableLink(false)
-  },[total])
+  }, [total])
 
-  function postRequest(){
+  function postRequest() {
+
+    const bodyWithTotal = {cart, total}
 
     fetch('/api/foodRequest', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(cart)
+      body: JSON.stringify(bodyWithTotal)
     })
-    .then(response => response.json())
-    .then(data => {
-      
-      order.push(data.data)
+      .then(response => response.json())
+      .then(data => { //retorna um objeto do pedido
 
-      alert("Pedido feito com sucesso")
-      
-      cleanCart()
-      router.push('/')
-    })
-    .catch(error => console.error(error))
+        const corpodopedido = {
+          DATA: data.data, 
+          TOTAL: data.total
+        }
+        //add a lista que vai para a adm da panificadora
+        order.unshift(corpodopedido)
+
+        alert("Pedido feito com sucesso")
+
+        cleanCart()
+        router.push('/')
+      })
+      .catch(error => console.error(error))
   }
 
   return (
@@ -59,31 +67,33 @@ export function Total({inRequests}: TotalProps) {
       {
         inRequests ? (
           <button
-          className={`button max-w-sm select-none
+            className={`button max-w-sm select-none
           ${enableLink ? "pointer-events-auto" : "pointer-events-none opacity-50"}`}
-          onClick={() => {
-            setLoading(true)
-            postRequest()
-          }}
-        >
-          {
-            loading ? <CircularProgress color="inherit" size={20} /> : "Realizar Pedido"
-          }
-        </button>
+            onClick={() => {
+              setLoading(true)
+              postRequest()
+              localStorage.removeItem("dataCart")
+              localStorage.removeItem("dataTotal")
+            }}
+          >
+            {
+              loading ? <CircularProgress color="inherit" size={20} /> : "Realizar Pedido"
+            }
+          </button>
         ) : (
           <Link
-          href="/requests"
-          className={`button max-w-sm select-none
+            href="/requests"
+            className={`button max-w-sm select-none
           ${enableLink ? "pointer-events-auto" : "pointer-events-none opacity-50"}`}
-          onClick={() => setLoading(true)}
-        >
-          {
-            loading ? <CircularProgress color="inherit" size={20} /> : "Ver o carrinho"
-          }
-        </Link>
+            onClick={() => setLoading(true)}
+          >
+            {
+              loading ? <CircularProgress color="inherit" size={20} /> : "Ver o carrinho"
+            }
+          </Link>
         )
       }
-    
+
     </div>
   )
 }

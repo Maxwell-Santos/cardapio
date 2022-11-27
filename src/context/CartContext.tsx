@@ -1,5 +1,5 @@
 import dataItems from '../../public/data.json'
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useMemo, useState } from "react"
 import { ItemProps } from '../interfaces/ItemProps';
 import { SectionProps } from '../interfaces/SectionProps';
 
@@ -8,7 +8,7 @@ export const CartContext = createContext<any>([])
 export function CartProvider({ children }: any) {
   const data = dataItems
   const [cart, setCart] = useState<ItemProps[]>([])
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState<string | number>(0)
 
   const findSection = (sectionId: number): SectionProps => {
     let SECTION: SectionProps = {
@@ -28,7 +28,7 @@ export function CartProvider({ children }: any) {
         console.log("item não encontrado", error)
       }
     })
-    
+
     return SECTION
   }
 
@@ -44,7 +44,7 @@ export function CartProvider({ children }: any) {
     //checando se o produto ja existe no carrinho
     //true: se o id não existir dentro do cart
     //false: se o id existir dentro do cart
-    const check = cart.every(item => {
+    const check = cart.every((item: ItemProps) => {
       return item.id !== productId
     })
 
@@ -52,7 +52,7 @@ export function CartProvider({ children }: any) {
       const data = section.content.filter(product => {
         return product.id === productId
       })
-      setCart(prev => [...prev, ...data])
+      setCart((prev: ItemProps[]) => [...prev, ...data])
     }
   }
 
@@ -62,17 +62,17 @@ export function CartProvider({ children }: any) {
       item.count = 1
     })
 
-    setCart(prevStateCart => prevStateCart = [])
+    setCart((prevStateCart: ItemProps[]) => prevStateCart = [])
   }
 
   const removeFromCart = (id?: string) => {
-    cart.map((product: ItemProps, index) => {
+    cart.map((product: ItemProps, index: number) => {
       if (product.id == id) {
         const response = confirm("Deseja remover esse item da sua lista?")
-        if (response){
+        if (response) {
           product.count = 1
           cart.splice(index, 1)
-          console.log("de dentro da fn remover",cart)
+          console.log("de dentro da fn remover", cart)
         }
       }
     })
@@ -82,7 +82,7 @@ export function CartProvider({ children }: any) {
   const increase = (id: string) => {
     let quantityItem = 1
 
-    cart.forEach(item => {
+    cart.forEach((item: ItemProps) => {
       if (item.id === id) {
         item.count += 1
         quantityItem = item.count
@@ -92,11 +92,10 @@ export function CartProvider({ children }: any) {
     return quantityItem
   }
 
-
   const reduction = (id: string) => {
     let quantityItem = 1
 
-    cart.forEach(item => {
+    cart.forEach((item: ItemProps) => {
 
       if (item.id == id) {
         if (item.count == 1) {
@@ -117,9 +116,33 @@ export function CartProvider({ children }: any) {
     const res = cart.reduce((prev: any, item: ItemProps) => {
       return prev + (item.price * item.count)
     }, 0)
-  
+
     setTotal(res)
   }
+
+  useMemo(() => {
+    if(total > 0){
+      localStorage.setItem('dataCart', JSON.stringify(cart))
+      localStorage.setItem('dataTotal', JSON.stringify(total))
+
+      console.log(localStorage.getItem("dataCart"))
+      console.log(localStorage.getItem("dataTotal"))
+    }
+  }, [cart, total])
+  
+  useEffect(() => {
+    const dataCart = localStorage.getItem('dataCart')
+    if (dataCart) {
+      const dataParse: ItemProps[] = JSON.parse(dataCart)
+      setCart(dataParse)
+    }
+
+    const dataTotal = localStorage.getItem('dataTotal')
+    if (dataTotal) {
+      JSON.parse(dataTotal)
+      setTotal(dataTotal)
+    }
+  }, [])
 
   return (
     <CartContext.Provider value={{
@@ -130,6 +153,7 @@ export function CartProvider({ children }: any) {
       cleanCart,
       removeFromCart,
       getTotal,
+      setTotal,
       total,
 
       findSection,

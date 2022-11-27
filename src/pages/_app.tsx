@@ -5,8 +5,8 @@ import { CartProvider } from '../context/CartContext'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CartProvider>
-      <Component {...pageProps} />
-    </CartProvider>
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
   )
 }

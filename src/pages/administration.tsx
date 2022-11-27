@@ -1,39 +1,52 @@
+import { useEffect, useMemo, useState } from "react"
 import { order as wishList } from "../utils/Orders"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import { RequestBody } from "../components/administration/RequestBody"
 import { OrderProps } from "../interfaces/OrderProps"
-import { useEffect, useState } from "react"
 
 export default function Administration() {
   const [list, setList] = useState(wishList)
 
-  const orderDelivered = (indexItemDelivered: number) => {
-    const listUpdated = list.map((order, index) => {
-      if (indexItemDelivered == index) {
-        list.splice(index, 1)
-        return list
-      }
-    })
-    setList(prevState => prevState = listUpdated)
-  }
-
   useEffect(() => {
-    if (list.length > 0) {
-      localStorage.setItem("ListKey", JSON.stringify(list))
-      
-      console.log(localStorage.getItem("ListKey"))
+    const localList = localStorage.getItem("listItems")
+
+    if (localList) {
+      const localListStorage = JSON.parse(localList)
+
+      setList(localListStorage)
+
+    } else {
+      setList(wishList)
     }
 
-
-  },[])
-
-  useEffect(() => {
-    setList(list)
-
-    // const dataList = JSON.parse(localStorage.getItem("ListKey"))
-    // if (dataList !== null) setList(dataList)
-  },[list])
+    // console.log(localStorage.getItem("listItems"))
+  }, [])
   
+  function setItemToLocal(){
+    localStorage.setItem("listItems", JSON.stringify(list))
+  }
+
+  useMemo(() => {
+    if (wishList.length > 0) setItemToLocal()
+
+    console.log("mudou",list)
+  }, [wishList.length])
+
+
+  const orderDelivered = (indexItemDelivered: number) => {
+    const l = localStorage.getItem("listItems") 
+    const lp = l && JSON.parse(l)
+
+    lp.map((order: any, index: number) => {
+      if (indexItemDelivered == index) {
+        lp.splice(index, 1)
+        setList(lp)
+        if(list.length == 0) localStorage.removeItem("listItems")
+      }
+    })
+
+  }
+
   return (
     <>
       <button
@@ -43,15 +56,15 @@ export default function Administration() {
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
       <h1
-        className="mx-auto text-center block w-fit pt-10"
+        className="mx-auto text-xl text-center block w-fit pt-10"
       >
         Administração de pedidos
       </h1>
 
-      <div className="w-full flex flex-wrap gap-5 md:p-14">
+      <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
         {
-          wishList.length > 0 ? wishList.map((order: OrderProps, index) => (
-           <RequestBody key={index} order={order} index={index} orderDelivered={orderDelivered} />
+          list.length > 0 ? list.map((order: OrderProps, index) => (
+            <RequestBody key={index} order={order} index={index} orderDelivered={orderDelivered} />
 
           )) : (
 
