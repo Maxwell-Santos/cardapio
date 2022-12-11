@@ -59,7 +59,7 @@ export function Navigation() {
             aria-label="full-width tabs example"
             scrollButtons={false}
             onChange={handleChange}
-            className="flex items-center px-2"
+            className="flex items-center px-2 py-4 bg-primary sticky top-0 z-10"
           >
             <TabUnstyled className="tab" aria-colindex={0}>
               Todos
