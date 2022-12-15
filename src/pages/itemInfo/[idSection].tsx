@@ -33,10 +33,10 @@ export default function ItemInfo() {
 
     if(itemInCart){
       cart.find((item:any) => item.id == id && setFoundedItem(item))
-      console.log("de dentro do carrinho", cart)
+      // console.log("de dentro do carrinho", cart)
       
     } else {
-      console.log("de fora do carrinho", cart)
+      // console.log("de fora do carrinho", cart)
       findItemOutOfCart()
     }
 
@@ -44,8 +44,8 @@ export default function ItemInfo() {
 
   function moreOne() {
     foundedItem && setQuantity(foundedItem.count++)
-    console.log(quantity)
-    console.log(foundedItem)
+    // console.log(quantity)
+    // console.log(foundedItem)
 
   }
 
@@ -61,8 +61,8 @@ export default function ItemInfo() {
 
       alert("a seleção mínima é 1")
     }
-    console.log(quantity)
-    console.log(foundedItem)
+    // console.log(quantity)
+    // console.log(foundedItem)
   }
 
   return (
@@ -95,9 +95,7 @@ export default function ItemInfo() {
                 <h1>
                   {foundedItem.name}
                 </h1>
-                <p
-                  className=""
-                >
+                <p>
                   {foundedItem.info}
                 </p>
                 <span
@@ -135,7 +133,6 @@ export default function ItemInfo() {
                     addToCart(Number(idSection), String(id))
                     history.back()
                   }}
-
                 >
                   Adicionar
                   <AddShoppingCartRoundedIcon />

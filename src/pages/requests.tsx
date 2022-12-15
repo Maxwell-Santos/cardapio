@@ -2,9 +2,9 @@ import { useContext } from "react"
 import { ItemRequested } from "../components/Card/ItemRequested"
 import { CartContext } from "../context/CartContext"
 import { ItemProps } from "../interfaces/ItemProps"
+import { Total } from "../components/Total"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
-import { Total } from "../components/Total"
 
 export default function Requests() {
   const { cart } = useContext(CartContext)
@@ -37,7 +37,7 @@ export default function Requests() {
                 </ul>
 
                 <div
-                  className="w-full "
+                  className="w-full"
                 >
                   <Total inRequests/>
                 </div>

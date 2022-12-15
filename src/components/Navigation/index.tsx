@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useMemo } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
@@ -25,7 +25,6 @@ export function Navigation() {
     const tabs = Array.from(tabsElement)
 
     tabs.map(tab => tab.ariaSelected == "true" && tab.classList.add("text-nav-active"))
-
   }
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -38,7 +37,8 @@ export function Navigation() {
     const tabsElement = document.querySelectorAll('.tab')
     const tabs = Array.from(tabsElement)
 
-    tabs.map(tab => Number(tab.ariaColIndex) == index ? tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
+    tabs.map(tab => Number(tab.ariaColIndex) == index ? 
+    tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
   }
 
   useEffect(() => {
@@ -90,6 +90,7 @@ export function Navigation() {
             onChangeIndex={handleChangeIndex}
             resistance
           >
+            {/* Guia "TODOS" */}
             <TabPanel value={value} index={0}>
               {
                 data.map((section: SectionProps) => {
@@ -121,6 +122,7 @@ export function Navigation() {
               }
             </TabPanel>
 
+            {/* Guia "CAFÉ DA MANHÃ" */}
             <TabPanel value={value} index={1}>
               {
                 data.map((section: SectionProps) => {
@@ -131,6 +133,7 @@ export function Navigation() {
               }
             </TabPanel>
 
+            {/* Guia "LANCHES" */}
             <TabPanel value={value} index={2}>
               {
                 data.map((section: SectionProps) => {
@@ -141,6 +144,7 @@ export function Navigation() {
               }
             </TabPanel>
 
+            {/* Guia "SOBREMESAS" */}
             <TabPanel value={value} index={3}>
               {
                 data.map((section: SectionProps) => {
@@ -151,6 +155,7 @@ export function Navigation() {
               }
             </TabPanel>
 
+            {/* Guia "BEBIDAS" */}
             <TabPanel value={value} index={4}>
               {
                 data.map((section: SectionProps) => {
@@ -160,6 +165,7 @@ export function Navigation() {
                 })
               }
             </TabPanel>
+            
           </SwipeableViews>
         </TabsUnstyled>
       </nav >

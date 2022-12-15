@@ -71,8 +71,7 @@ export function ItemRequested({
         aria-label="remover item do carrinho"
         onClick={() => removeFromCart(id)}
       >
-        <CloseRounded
-        />
+        <CloseRounded />
       </IconButton>
     </li>
   )

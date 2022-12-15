@@ -1,7 +1,7 @@
 import dataItems from '../../public/data.json'
 import React, { createContext, useEffect, useMemo, useState } from "react"
-import { ItemProps } from '../interfaces/ItemProps';
-import { SectionProps } from '../interfaces/SectionProps';
+import { ItemProps } from '../interfaces/ItemProps'
+import { SectionProps } from '../interfaces/SectionProps'
 
 export const CartContext = createContext<any>([])
 
@@ -125,8 +125,8 @@ export function CartProvider({ children }: any) {
       localStorage.setItem('dataCart', JSON.stringify(cart))
       localStorage.setItem('dataTotal', JSON.stringify(total))
 
-      console.log(localStorage.getItem("dataCart"))
-      console.log(localStorage.getItem("dataTotal"))
+      // console.log(localStorage.getItem("dataCart"))
+      // console.log(localStorage.getItem("dataTotal"))
     }
   }, [cart, total])
   

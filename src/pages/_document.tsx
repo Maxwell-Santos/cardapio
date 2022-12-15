@@ -2,11 +2,9 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang='pt-BR'>
+    <Html lang='pt-br'>
       <Head>
-        <title>Padaria Digital</title>
         <meta name="description" content="Cardápio para padaria Digital" />
-        <link rel="icon" href="/favicon.ico" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />

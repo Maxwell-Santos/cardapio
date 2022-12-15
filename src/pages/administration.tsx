@@ -1,51 +1,31 @@
-import { useEffect, useMemo, useState } from "react"
-import { order as wishList } from "../utils/Orders"
+import { useEffect, useState } from "react"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import { RequestBody } from "../components/administration/RequestBody"
 import { OrderProps } from "../interfaces/OrderProps"
+import { Skeleton } from "@mui/material"
 
 export default function Administration() {
-  const [list, setList] = useState(wishList)
+  const [list, setList] = useState([])
 
   useEffect(() => {
-    const localList = localStorage.getItem("listItems")
-
-    if (localList) {
-      const localListStorage = JSON.parse(localList)
-
-      setList(localListStorage)
-
-    } else {
-      setList(wishList)
+    const localList = localStorage.getItem("localList")
+    
+    if (!localList) {
+      fetch('/api/fRequest')
+        .then(response => response.json())
+        .then(data => {
+          setList(data.data)
+          localStorage.setItem("localList", JSON.stringify(data.data))
+          console.log("mostrando do banco de dados")
+        })
+        .catch(error => console.log(error))
+      }
+      else {
+        setList(JSON.parse(localList))
+        console.log("mostrando do local")
     }
 
-    // console.log(localStorage.getItem("listItems"))
   }, [])
-  
-  function setItemToLocal(){
-    localStorage.setItem("listItems", JSON.stringify(list))
-  }
-
-  useMemo(() => {
-    if (wishList.length > 0) setItemToLocal()
-
-    console.log("mudou",list)
-  }, [wishList.length])
-
-
-  const orderDelivered = (indexItemDelivered: number) => {
-    const l = localStorage.getItem("listItems") 
-    const lp = l && JSON.parse(l)
-
-    lp.map((order: any, index: number) => {
-      if (indexItemDelivered == index) {
-        lp.splice(index, 1)
-        setList(lp)
-        if(list.length == 0) localStorage.removeItem("listItems")
-      }
-    })
-
-  }
 
   return (
     <>
@@ -63,18 +43,25 @@ export default function Administration() {
 
       <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
         {
-          list.length > 0 ? list.map((order: OrderProps, index) => (
-            <RequestBody key={index} order={order} index={index} orderDelivered={orderDelivered} />
+          list.length > 0 ?
+            list.map((order: OrderProps, index) => (
+              <RequestBody key={index} order={order} index={index} />
 
-          )) : (
+            )) : (
 
-            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] opacity-25 text-lg w-full text-center">
-              <span>Ainda não há pedidos</span>
-            </div>
-          )
+              <div
+                className="flex flex-wrap gap-3 justify-center p-5 w-screen"
+              >
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+                <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
+              </div>
+            )
         }
       </div>
     </>
-
   )
 }

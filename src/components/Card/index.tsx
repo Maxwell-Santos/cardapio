@@ -6,22 +6,20 @@ import { ItemProps } from "../../interfaces/ItemProps"
 
 export function Card({ sectionId, item }: CardProps) {
 
-  const [existsItem, setExisistItem] = useState(false)
+  const [existsItem, setExistsItem] = useState(false)
   const { cart } = useContext(CartContext)
 
   useMemo(() => {
     cart.map((itemInCart: ItemProps) => {
 
       if (item.id === itemInCart.id) {
-        setExisistItem(true)
+        setExistsItem(true)
       }
     })
   }, [item])
 
   return (
-    <Link href={`/itemInfo/${sectionId}?id=${item.id}`}
-    // className={`${existsItem && "pointer-events-none"}`}
-    >
+    <Link href={`/itemInfo/${sectionId}?id=${item.id}`}>
       <div
         className={`w-full rounded-md flex gap-5 my-2 transition-all overflow-hidden border-black h-28 
       ${existsItem ? "bg-disable" : "bg-item-card shadow-sm md:hover:shadow-lg"}

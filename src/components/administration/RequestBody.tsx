@@ -1,9 +1,11 @@
 
+import { format } from "date-fns";
 import { ItemProps } from "../../interfaces/ItemProps";
 import { RequestOnAdmProps } from "../../interfaces/RequestOnAdmProps";
 
-export function RequestBody({ order, index, orderDelivered }: RequestOnAdmProps) {
-  
+export function RequestBody({ order, index }: RequestOnAdmProps) {
+  const dateFormatted = format(new Date(order.createdAt), "HH':'mm 'de' dd/MM/yyyy")
+
   return (
     <div
       className="w-full max-w-[500px] p-5
@@ -11,7 +13,7 @@ export function RequestBody({ order, index, orderDelivered }: RequestOnAdmProps)
           border-b bg-item-card rounded-lg shadow-md"
     >
       {
-        order.DATA.pedido.map((singleItem: ItemProps) => (
+        order.cart.map((singleItem: ItemProps) => (
           <div 
           key={singleItem.id}
           className="rounded-lg shadow-sm bg-item-card w-full mb-3 p-3"
@@ -33,17 +35,19 @@ export function RequestBody({ order, index, orderDelivered }: RequestOnAdmProps)
       }
         <span
         className="my-3 text-xl text-item-price ml-auto"
-        >Total: R${order.TOTAL},00
+        >Total: R${order.total},00
         </span>
       <div
         className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 py-2"
       >
         <span
           className="p-1 px-3 rounded-full bg-date mt-2 text-white tracking-wide font-light"
-        >{order.DATA.day}</span>
+        >
+          {dateFormatted}
+        </span>
+
         <button
           className="bg-button-primary hover:bg-button-primary-onclick focus:bg-button-primary-onclick p-3 text-button-primary rounded-md"
-          onClick={() => orderDelivered(index)}
         >
           Pedido Entregue
         </button>

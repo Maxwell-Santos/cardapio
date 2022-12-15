@@ -10,7 +10,7 @@ export function TabPanel(props: TabPanelProps) {
   return (
     <ul
       role="tabpanel"
-      hidden={value !== index}
+      // hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
     >

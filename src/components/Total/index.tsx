@@ -3,7 +3,6 @@ import { CircularProgress } from "@mui/material"
 import { useContext, useMemo, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { useRouter } from "next/router"
-import { order } from "../../utils/Orders"
 
 interface TotalProps {
   inRequests?: boolean
@@ -29,25 +28,22 @@ export function Total({ inRequests }: TotalProps) {
 
     const bodyWithTotal = {cart, total}
 
-    fetch('/api/foodRequest', {
+    fetch('/api/fRequest', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {"Content-type": "application/json; charset=UTF-8"},
       body: JSON.stringify(bodyWithTotal)
     })
-      .then(response => response.json())
-      .then(data => { //retorna um objeto do pedido
-
-        const corpodopedido = {
-          DATA: data.data, 
-          TOTAL: data.total
-        }
-        //add a lista que vai para a adm da panificadora
-        order.unshift(corpodopedido)
-
+      .then(data => {
         alert("Pedido feito com sucesso")
 
+        /**
+         * para evitar muitas requisições ao banco, na regra de negócio da página administration.tsx, existe uma regra que consome o banco de dados para listar os pedidos...
+         * a regra precisa desse "localList", se ele não existir, fará a requisição ao banco, se ele existir, vai listar na tela os dados do localStorage (que é a lista da ultima requisição ao banco)
+         * 
+         * sempre que tiver um novo pedido, vai remover essa âncora "localList" do localStorage 
+        */
+        localStorage.removeItem("localList") 
+        
         cleanCart()
         router.push('/')
       })
