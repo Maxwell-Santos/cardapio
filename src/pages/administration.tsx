@@ -1,28 +1,36 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import { RequestBody } from "../components/administration/RequestBody"
 import { OrderProps } from "../interfaces/OrderProps"
 import { Skeleton } from "@mui/material"
+import { admContext } from "../context/admContext"
+import { AdmContextProps } from "../interfaces/AdmContextProps"
 
 export default function Administration() {
   const [list, setList] = useState([])
 
+  const { handleNewOrder, handleNotNewOrder, order } = useContext<AdmContextProps>(admContext)
+
   useEffect(() => {
     const localList = localStorage.getItem("localList")
-    
-    if (!localList) {
+
+    //se o valor de order for false ou não existir um localstorage da lista de pedidos
+    if (!order || !localList) {
       fetch('/api/fRequest')
         .then(response => response.json())
         .then(data => {
           setList(data.data)
           localStorage.setItem("localList", JSON.stringify(data.data))
           console.log("mostrando do banco de dados")
+          handleNewOrder()
+          
         })
         .catch(error => console.log(error))
-      }
-      else {
-        setList(JSON.parse(localList))
-        console.log("mostrando do local")
+    }
+    else {
+      setList(JSON.parse(localList))
+      console.log("mostrando do local")
+      handleNotNewOrder()
     }
 
   }, [])

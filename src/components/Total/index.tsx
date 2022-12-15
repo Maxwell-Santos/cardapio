@@ -3,6 +3,8 @@ import { CircularProgress } from "@mui/material"
 import { useContext, useMemo, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { useRouter } from "next/router"
+import { admContext } from "../../context/admContext"
+import { AdmContextProps } from "../../interfaces/AdmContextProps"
 
 interface TotalProps {
   inRequests?: boolean
@@ -11,6 +13,7 @@ interface TotalProps {
 export function Total({ inRequests }: TotalProps) {
   const router = useRouter()
   const { cart, total, getTotal, cleanCart } = useContext(CartContext)
+  const { handleNewOrder } = useContext<AdmContextProps>(admContext)
 
   const [enableLink, setEnableLink] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -42,8 +45,8 @@ export function Total({ inRequests }: TotalProps) {
          * 
          * sempre que tiver um novo pedido, vai remover essa âncora "localList" do localStorage 
         */
-        localStorage.removeItem("localList") 
-        
+       localStorage.removeItem("localList")
+        handleNewOrder()
         cleanCart()
         router.push('/')
       })
