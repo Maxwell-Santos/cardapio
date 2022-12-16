@@ -9,6 +9,11 @@ export function CartProvider({ children }: any) {
   const data = dataItems
   const [cart, setCart] = useState<ItemProps[]>([])
   const [total, setTotal] = useState<string | number>(0)
+  const [comments, setComment] = useState<string>("")
+
+  const handleComment = (comment: string) => {
+    setComment(comment)
+  }
 
   const findSection = (sectionId: number): SectionProps => {
     let SECTION: SectionProps = {
@@ -173,7 +178,10 @@ export function CartProvider({ children }: any) {
       findSection,
       findItem,
       reduction,
-      increase
+      increase,
+
+      handleComment,
+      comments,
     }}>
 
       {children}

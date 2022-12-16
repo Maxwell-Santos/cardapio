@@ -1,10 +1,21 @@
 
 import { format } from "date-fns";
 import { ItemProps } from "../../interfaces/ItemProps";
-import { RequestOnAdmProps } from "../../interfaces/RequestOnAdmProps";
+import { OrderProps } from "../../interfaces/OrderProps";
 
-export function RequestBody({ order, index }: RequestOnAdmProps) {
-  const dateFormatted = format(new Date(order.createdAt), "HH':'mm 'de' dd/MM/yyyy")
+interface RequestBodyProps{
+  order: OrderProps
+}
+export function RequestBody({order}: RequestBodyProps) {
+
+  const {
+    cart,
+    comments,
+    createdAt,
+    total
+  } = order
+
+  const dateFormatted = format(new Date(createdAt), "HH':'mm 'de' dd/MM/yyyy")
 
   return (
     <div
@@ -13,7 +24,7 @@ export function RequestBody({ order, index }: RequestOnAdmProps) {
           border-b bg-item-card rounded-lg shadow-md"
     >
       {
-        order.cart.map((singleItem: ItemProps) => (
+        cart.map((singleItem: ItemProps) => (
           <div 
           key={singleItem.id}
           className="rounded-lg shadow-sm bg-item-card w-full mb-3 p-3"
@@ -33,9 +44,16 @@ export function RequestBody({ order, index }: RequestOnAdmProps) {
           </div>
         ))
       }
+      
+      <p 
+        className={!comments ? "hidden" : "opacity-80 leading-snug bg-box-comments/10 w-full rounded-md p-2 px-3 text-comment max-h-[120px] overflow-auto"}
+        >
+          {comments}
+        </p>
+
         <span
         className="my-3 text-xl text-item-price ml-auto"
-        >Total: R${order.total},00
+        >Total: R${total},00
         </span>
       <div
         className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 py-2"

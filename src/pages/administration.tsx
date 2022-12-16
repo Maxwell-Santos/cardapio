@@ -5,12 +5,13 @@ import { OrderProps } from "../interfaces/OrderProps"
 import { Skeleton } from "@mui/material"
 import { admContext } from "../context/admContext"
 import { AdmContextProps } from "../interfaces/AdmContextProps"
+import Head from "next/head"
 
 export default function Administration() {
   const [list, setList] = useState([])
 
   const { handleNewOrder, handleNotNewOrder, order } = useContext<AdmContextProps>(admContext)
-
+  
   useEffect(() => {
     const localList = localStorage.getItem("localList")
 
@@ -37,6 +38,10 @@ export default function Administration() {
 
   return (
     <>
+    <Head>
+      <title>Administração de pedidos</title>
+    </Head>
+    
       <button
         className="back-button fixed"
         onClick={() => history.back()}
@@ -51,14 +56,13 @@ export default function Administration() {
 
       <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
         {
-          list?
+          list.length > 0 ?
             list.map((order: OrderProps, index) => (
-              <RequestBody key={index} order={order} index={index} />
-
+              <RequestBody key={index} order={order} />
             )) : (
 
               <div
-                className="flex flex-wrap gap-3 justify-center p-5 w-screen"
+                className="flex flex-wrap gap-3 justify-center p-5 w-screen min-h-screen"
               >
                 <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
                 <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />

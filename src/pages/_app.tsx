@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/tab.css'
+import '../styles/webkit-scrollbar.css'
 import type { AppProps } from 'next/app'
 import { CartProvider } from '../context/CartContext'
 import { AdmProvider } from '../context/admContext'

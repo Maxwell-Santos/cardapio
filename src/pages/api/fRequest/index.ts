@@ -6,14 +6,15 @@ connection()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req
-  const { cart, total } = req.body
+  const { cart, total, comments } = req.body
 
   switch (method) {
     case 'POST':
       try {
         const newFoodRequest = await foodRequestModel.create({
           cart,
-          total
+          total,
+          comments
         })
         return res.json({ success: true, data: newFoodRequest }
 

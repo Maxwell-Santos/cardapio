@@ -11,7 +11,6 @@ export default function Home() {
       <Head>
         <title>Cardápio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
       </Head>
       
       <div className="w-screen flex justify-center">

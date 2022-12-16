@@ -37,4 +37,9 @@
   .skeleton-adm{
     @apply rounded-lg block w-full h-[400px] max-w-[350px]
   }
+
+  .comments{
+    @apply p-4 outline-none appearance-none text-opacity-80 w-full resize-none rounded-lg focus:border focus:border-comment-outline text-comment placeholder:text-comment placeholder:opacity-40
+    bg-box-comments/10
+  }
 }

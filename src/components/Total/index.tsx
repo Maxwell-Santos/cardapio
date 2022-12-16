@@ -12,7 +12,7 @@ interface TotalProps {
 
 export function Total({ inRequests }: TotalProps) {
   const router = useRouter()
-  const { cart, total, getTotal, cleanCart } = useContext(CartContext)
+  const { cart, total, getTotal, cleanCart, comments } = useContext(CartContext)
   const { handleNewOrder } = useContext<AdmContextProps>(admContext)
 
   const [enableLink, setEnableLink] = useState(false)
@@ -29,12 +29,12 @@ export function Total({ inRequests }: TotalProps) {
 
   function postRequest() {
 
-    const bodyWithTotal = {cart, total}
+    const bodyOfRequest = {cart, total, comments}
 
     fetch('/api/fRequest', {
       method: 'POST',
       headers: {"Content-type": "application/json; charset=UTF-8"},
-      body: JSON.stringify(bodyWithTotal)
+      body: JSON.stringify(bodyOfRequest)
     })
       .then(data => {
         alert("Pedido feito com sucesso")

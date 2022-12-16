@@ -13,4 +13,6 @@ export interface CartContextProps {
   getTotal: () => number;
   reduction: (id: string, local?:string) => number;
   increase: (id: string, local?:string) => number;
+  handleComment: (comment: string) => void;
+  comments: string;
 }

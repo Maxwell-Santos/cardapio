@@ -10,6 +10,7 @@ const FoodRequestSchema = new mongoose.Schema({
     }
   ],
   total: Number,
+  comments: String,
   createdAt: {
     type:Date,
     default: new Date

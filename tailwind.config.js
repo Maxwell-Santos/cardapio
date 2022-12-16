@@ -30,7 +30,8 @@ module.exports = {
         'item-description': '#000000cc', // 80%
         'item-price': '#A64B2A',
         'button-primary': '#fff',
-        'icon': '#8E3200'
+        'icon': '#8E3200',
+        'comment': '#8E3200',
       },
 
       backgroundColor: {
@@ -39,14 +40,15 @@ module.exports = {
         'button-primary': '#8E3200',
         'button-primary-disable': '#8e32008f',
         'date': '#8e32008f',
+        'box-comments': '#8e32008f',
         'button-primary-onclick': '#81350b',
         'item-card': '#ffffff4d' // 30%
       },
 
       borderColor: {
         'request-list': '#D7A86E',
+        'comment-outline': '#D7A86E',
       }
-
     },
   },
   plugins: [
