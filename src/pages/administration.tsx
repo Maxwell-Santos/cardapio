@@ -51,7 +51,7 @@ export default function Administration() {
 
       <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
         {
-          list.length > 0 ?
+          list?
             list.map((order: OrderProps, index) => (
               <RequestBody key={index} order={order} index={index} />
 

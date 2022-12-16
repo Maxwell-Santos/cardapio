@@ -11,6 +11,6 @@ export interface CartContextProps {
   findSection: (sectionId:number) => SectionProps;
   findItem: (products: any, productId: string) => ItemProps;
   getTotal: () => number;
-  reduction: (id: string) => void;
-  increase: (id: string) => void;
+  reduction: (id: string, local?:string) => number;
+  increase: (id: string, local?:string) => number;
 }

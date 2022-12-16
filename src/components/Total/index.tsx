@@ -38,14 +38,17 @@ export function Total({ inRequests }: TotalProps) {
     })
       .then(data => {
         alert("Pedido feito com sucesso")
-
         /**
          * para evitar muitas requisições ao banco, na regra de negócio da página administration.tsx, existe uma regra que consome o banco de dados para listar os pedidos...
          * a regra precisa desse "localList", se ele não existir, fará a requisição ao banco, se ele existir, vai listar na tela os dados do localStorage (que é a lista da ultima requisição ao banco)
          * 
          * sempre que tiver um novo pedido, vai remover essa âncora "localList" do localStorage 
         */
-       localStorage.removeItem("localList")
+      //  localStorage.removeItem("localList")
+      //  localStorage.removeItem("dataCart")
+      //  localStorage.removeItem("dataTotal")
+       localStorage.clear()
+
         handleNewOrder()
         cleanCart()
         router.push('/')
@@ -66,13 +69,11 @@ export function Total({ inRequests }: TotalProps) {
       {
         inRequests ? (
           <button
-            className={`button max-w-sm select-none
+            className={`button max-w-sm select-none font-light
           ${enableLink ? "pointer-events-auto" : "pointer-events-none opacity-50"}`}
             onClick={() => {
               setLoading(true)
               postRequest()
-              localStorage.removeItem("dataCart")
-              localStorage.removeItem("dataTotal")
             }}
           >
             {
@@ -82,7 +83,7 @@ export function Total({ inRequests }: TotalProps) {
         ) : (
           <Link
             href="/requests"
-            className={`button max-w-sm select-none
+            className={`button max-w-sm select-none font-light
           ${enableLink ? "pointer-events-auto" : "pointer-events-none opacity-50"}`}
             onClick={() => setLoading(true)}
           >
@@ -92,7 +93,6 @@ export function Total({ inRequests }: TotalProps) {
           </Link>
         )
       }
-
     </div>
   )
 }

@@ -22,11 +22,12 @@ export function ItemRequested({
   //precisei criar este estado, porque não estava atualizando a quantidade de item na tela, apesar de realmente atualizar, não refletia na tela, apenas quando saísse e voltasse para o carrinho(requests.tsx), ele mostrava o valor certo  
   const [mirror, setMirror] = useState(count)
 
+  //recebe a função reduction ou increase do item
   function handleQuantity(quantity: number) {
+    setMirror(quantity)
     console.log("quantidade do item", quantity)
     console.log("meu espelho", mirror)
 
-    setMirror(quantity)
   }
 
   return (

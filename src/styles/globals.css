@@ -28,7 +28,7 @@
   @apply opacity-20 text-icon
   }
   .button{
-  @apply rounded-xl p-3 px-3 font-Fraunces tracking-wide text-button-primary bg-button-primary transition-all flex-1 flex items-center justify-center gap-2 hover:bg-button-primary-onclick
+  @apply rounded-md p-3 font-Fraunces tracking-wide text-button-primary bg-button-primary transition-all flex-1 flex items-center justify-center gap-2 hover:bg-button-primary-onclick text-base
   }
   .back-button{
   @apply m-3 aspect-square cursor-pointer p-2 fixed rounded-full bg-primary/30 backdrop-blur-sm shadow-sm

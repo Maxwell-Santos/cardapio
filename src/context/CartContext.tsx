@@ -39,6 +39,8 @@ export function CartProvider({ children }: any) {
   }
 
   const addToCart = (sectionId: number, productId: string) => {
+
+    console.log(cart)
     const section = findSection(sectionId) //procurar a seção
 
     //checando se o produto ja existe no carrinho
@@ -66,6 +68,7 @@ export function CartProvider({ children }: any) {
   }
 
   const removeFromCart = (id?: string) => {
+
     cart.map((product: ItemProps, index: number) => {
       if (product.id == id) {
         const response = confirm("Deseja remover esse item da sua lista?")
@@ -73,21 +76,35 @@ export function CartProvider({ children }: any) {
           product.count = 1
           cart.splice(index, 1)
           console.log("de dentro da fn remover", cart)
+
+          const item = localStorage.getItem("dataCart")
+          if (item) {
+            const cartParsed = JSON.parse(item)
+            cartParsed.map((locaItem: ItemProps, index: number) => {
+              if (locaItem.id == id)
+                cartParsed.splice(index, 1)
+            })
+          }
         }
       }
     })
     getTotal()
+
+
   }
 
   const increase = (id: string) => {
     let quantityItem = 1
 
-    cart.forEach((item: ItemProps) => {
-      if (item.id === id) {
-        item.count += 1
-        quantityItem = item.count
-      }
-    })
+      cart.forEach((item: any) => {
+        if (item.id === id) {
+          item.count += 1
+          quantityItem = item.count
+
+          console.log("do carrinho", item)
+        }
+      })
+
     getTotal()
     return quantityItem
   }
@@ -96,11 +113,9 @@ export function CartProvider({ children }: any) {
     let quantityItem = 1
 
     cart.forEach((item: ItemProps) => {
-
       if (item.id == id) {
         if (item.count == 1) {
           removeFromCart(item.id)
-
         } else {
           item.count -= 1
         }
@@ -108,7 +123,6 @@ export function CartProvider({ children }: any) {
       }
     })
     getTotal()
-
     return quantityItem
   }
 
@@ -121,7 +135,7 @@ export function CartProvider({ children }: any) {
   }
 
   useMemo(() => {
-    if(total > 0){
+    if (total > 0) {
       localStorage.setItem('dataCart', JSON.stringify(cart))
       localStorage.setItem('dataTotal', JSON.stringify(total))
 
@@ -129,7 +143,7 @@ export function CartProvider({ children }: any) {
       // console.log(localStorage.getItem("dataTotal"))
     }
   }, [cart, total])
-  
+
   useEffect(() => {
     const dataCart = localStorage.getItem('dataCart')
     if (dataCart) {
