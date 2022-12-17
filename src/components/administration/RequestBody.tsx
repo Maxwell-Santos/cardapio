@@ -21,7 +21,7 @@ export function RequestBody({order}: RequestBodyProps) {
     <div
       className="w-full max-w-[500px] p-5
           flex flex-col items-start justify-between 
-          border-b bg-item-card rounded-lg shadow-md"
+          border-b bg-item-card rounded-lg shadow-sm"
     >
       {
         cart.map((singleItem: ItemProps) => (

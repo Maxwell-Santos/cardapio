@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import { RequestBody } from "../components/administration/RequestBody"
 import { OrderProps } from "../interfaces/OrderProps"
@@ -9,9 +9,8 @@ import Head from "next/head"
 
 export default function Administration() {
   const [list, setList] = useState([])
-
   const { handleNewOrder, handleNotNewOrder, order } = useContext<AdmContextProps>(admContext)
-  
+
   useEffect(() => {
     const localList = localStorage.getItem("localList")
 
@@ -57,7 +56,7 @@ export default function Administration() {
       <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
         {
           list.length > 0 ?
-            list.map((order: OrderProps, index) => (
+          list.reverse().map((order: OrderProps, index: number) => (
               <RequestBody key={index} order={order} />
             )) : (
 

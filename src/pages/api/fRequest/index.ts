@@ -38,6 +38,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     default:
       console.log("Esse método não foi aceito")
+      res.status(405).json({ success: false, msg: "Método não permitido"  })
+
       break;
   }
 }
