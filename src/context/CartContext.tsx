@@ -2,6 +2,7 @@ import dataItems from '../../public/data.json'
 import React, { createContext, useEffect, useMemo, useState } from "react"
 import { ItemProps } from '../interfaces/ItemProps'
 import { SectionProps } from '../interfaces/SectionProps'
+import Swal from 'sweetalert2'
 
 export const CartContext = createContext<any>([])
 
@@ -72,12 +73,14 @@ export function CartProvider({ children }: any) {
     setCart((prevStateCart: ItemProps[]) => prevStateCart = [])
   }
 
-  const removeFromCart = (id?: string) => {
+  const removeFromCart = (id?: string, withoutRequestsPage?: boolean) => {
 
     cart.map((product: ItemProps, index: number) => {
       if (product.id == id) {
-        const response = confirm("Deseja remover esse item da sua lista?")
-        if (response) {
+
+        //criei essa condição para não chamar o alert quando for um decremento da lista, porque estava dando um erro de lógica então criei esse stopin para fazer a mesma coisa que normalmente faria, porém sem chamar o alert.
+
+        if(withoutRequestsPage){
           product.count = 1
           cart.splice(index, 1)
           console.log("de dentro da fn remover", cart)
@@ -90,25 +93,55 @@ export function CartProvider({ children }: any) {
                 cartParsed.splice(index, 1)
             })
           }
+          getTotal()
+      
+        } else{
+          Swal.fire({
+            title: 'Quer mesmo remover esse item da lista?',
+            text: `Você está prestes a remover ${product.count} ${product.name} da sua lista de pedido`,
+            showCancelButton: true,
+            showConfirmButton: true,
+            focusDeny: true,
+            cancelButtonText: `Manter na lista`,
+            cancelButtonColor: '#8E3200',
+            confirmButtonText: `Sim remover`,
+            confirmButtonColor: '#2e46969d',
+            background: '#fae5b9',
+            color: '#8E3200',
+            
+          }).then((result) => {
+            if (result.isConfirmed) {
+              product.count = 1
+              cart.splice(index, 1)
+              console.log("de dentro da fn remover", cart)
+
+              const item = localStorage.getItem("dataCart")
+              if (item) {
+                const cartParsed = JSON.parse(item)
+                cartParsed.map((locaItem: ItemProps, index: number) => {
+                  if (locaItem.id == id)
+                    cartParsed.splice(index, 1)
+                })
+              }
+            }
+            getTotal()
+          })
         }
       }
     })
-    getTotal()
-
-
   }
 
   const increase = (id: string) => {
     let quantityItem = 1
 
-      cart.forEach((item: any) => {
-        if (item.id === id) {
-          item.count += 1
-          quantityItem = item.count
+    cart.forEach((item: any) => {
+      if (item.id === id) {
+        item.count += 1
+        quantityItem = item.count
 
-          console.log("do carrinho", item)
-        }
-      })
+        console.log("do carrinho", item)
+      }
+    })
 
     getTotal()
     return quantityItem

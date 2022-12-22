@@ -9,7 +9,7 @@
         "price": 10.00,
         "info": "lanche delicioso de hambúrguer",
         "count": 1,
-        "img" : "https://hridiomas.com.br/wp-content/uploads/destaque-321.jpg"
+        "img": "https://hridiomas.com.br/wp-content/uploads/destaque-321.jpg"
       },
       {
         "id": "2l",
@@ -26,6 +26,14 @@
         "info": "lanche delicioso de carne branca, famoso frangão",
         "count": 1,
         "img": "https://brtakeout.com/wp-content/uploads/x-chicken.png"
+      },
+      {
+        "id": "4l",
+        "name": "X-Bacon",
+        "price": 18.00,
+        "info": "lanche com hamburger e bacon, bacon é sempre bem vindo, menos para os vegetarianos, ai vai só salada mesmo",
+        "count": 1,
+        "img": "https://embutidosbonatti.ind.br/temp/xxx-57-1920x1080m1.jpg"
       }
     ]
   },
@@ -56,13 +64,107 @@
         "info": "pãozinho de queijo bom demais, pão com queijo... tem como ficar melhor?",
         "count": 1,
         "img": "https://essareceitafunciona.com.br/wp-content/uploads/2022/07/Pao-de-queijo-Essa-Receita-Funciona-9.jpg"
+      },
+      {
+        "id": "4cm",
+        "name": "Cappuccino",
+        "price": 9.00,
+        "info": "Uma alternativa ao pingado",
+        "count": 1,
+        "img": "https://media.istockphoto.com/id/1130315137/pt/foto/cup-of-cappuccino-coffee.jpg?s=612x612&w=0&k=20&c=qaTbns_bCLWnNAQKix9mP0Tkz6nffx4dUthvnBW1ve0="
+      },
+      {
+        "id": "5cm",
+        "name": "Misto Quente",
+        "price": 7.00,
+        "info": "Sem esse meu café da manhã não está completo. E o seu?",
+        "count": 1,
+        "img": "https://static-images.ifood.com.br/image/upload/t_medium/pratos/79577a43-eb5a-458e-9f87-47e3aa23b007/202110291206_8881_i.jpg"
+      },
+      {
+        "id": "6cm",
+        "name": "Coxinha",
+        "price": 6.00,
+        "info": "Coxinha de frango",
+        "count": 1,
+        "img": "https://vegorganico.com.br/wp-content/uploads/2022/03/traditional-fried-coxinha-black-plate-slate-background-brazilian-snack.jpg"
       }
     ]
   },
   {
     "id": 4,
+    "name": "combos",
+    "content": [
+      {
+        "id": "1c",
+        "name": "Combo Aguenta Coração - parte 1",
+        "price": 35.00,
+        "info": "Acompanha 2 hamburgers e batatas fritas",
+        "count": 1,
+        "img": "https://casaeconstrucao.org/wp-content/uploads/2021/03/2-lanche-na-caixa-de-pizza-com-batata-frita-com-cheddar.jpeg"
+      },
+      {
+        "id": "2c",
+        "name": "Combo Aguenta Coração 'dessa você não passa' - parte 2",
+        "price": 40.00,
+        "info": "Acompanha 2 x-salada, bata-frita com chedar e bacon, linguiça, frango e carne acebolada. A ideia é fazer o coração de voces trabalhar como nunca.",
+        "count": 1,
+        "img": "https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/33j4vq69equcw.jpg"
+      },
+      {
+        "id": "3c",
+        "name": "Combo sem arrependimento",
+        "price": 25.00,
+        "info": "Acompanha um copo de refrigerante, hamburger e um balde de bata-frita",
+        "count": 1,
+        "img": "https://blog.castellmaq.com.br/wp-content/uploads/2022/01/post_6-ideias-de-combos-de-lanches-para-alavancar-suas-vendas_blog_castellmaq_texto_02.jpg"
+      },
+      {
+        "id": "3c",
+        "name": "Combo 'deixa que eu pago a conta'",
+        "price": 15.00,
+        "info": "Acompanha um hamburger e bata-frita",
+        "count": 1,
+        "img": "http://www.patiobellavista.com.br/storage/patiobellavista/produtos/combo-kids-patio-bella-vista-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 5,
     "name": "bebidas",
     "content": [
+      {
+        "id": "6b",
+        "name": "Suco de abacaxi com hortelã",
+        "price": 6.00,
+        "info": "Então né... tem gosto para tudo",
+        "count": 1,
+        "img": "https://pubimg.band.uol.com.br/files/ef132c71be1be30ed8f2.png"
+      },
+      {
+        "id": "7b",
+        "name": "Suco de morango",
+        "price": 6.00,
+        "info": "Esse é bom demais, mas não vai vir cheio de morango assim é só o copo com suco ok.",
+        "count": 1,
+        "img": "http://www.pantuccirestaurante.com.br/wp-content/uploads/2018/08/Os-Beneficios-do-Suco-de-Morango-Para-Saude-pantucci-trattoria.jpg"
+      },
+      {
+        "id": "8b",
+        "name": "Suco de uva",
+        "price": 6.00,
+        "info": "Suco de uva natural, é só isso mesmo",
+        "count": 1,
+        "img": "https://img.cybercook.com.br/receitas/612/suco-de-uva-natural.jpeg"
+      },
+      {
+        "id": "8b",
+        "name": "Suco de laranja",
+        "price": 6.00,
+        "info": "Suco de laranja",
+        "count": 1,
+        "img": "https://img.freepik.com/fotos-gratis/suco-de-laranja-fresco-no-copo-em-fundo-escuro_1150-45560.jpg"
+      },
       {
         "id": "1b",
         "name": "Coca-cola",
@@ -106,7 +208,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "sobremesas",
     "content": [
       {

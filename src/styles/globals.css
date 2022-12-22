@@ -4,7 +4,7 @@
 
 @layer base{
   body{
-    @apply text-[16px] bg-primary font-Inter min-h-screen
+    @apply text-[16px] bg-primary font-Inter min-h-screen selection:bg-[#8e32008f]
   }
 
   h1, h2, h3 {
@@ -23,6 +23,10 @@
 @layer components{
   .tab{
     @apply text-nav capitalize mx-2
+  }
+
+  .namesInAll{
+    @apply mt-6 ml-2 text-2xl first:mt-0
   }
   .icon{
   @apply opacity-20 text-icon

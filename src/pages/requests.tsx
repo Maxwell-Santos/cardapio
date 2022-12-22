@@ -13,7 +13,9 @@ export default function Requests() {
 
   return (
     <section>
-      <Head>Seu Pedido</Head>
+      <Head>
+        <title>Seu Pedido</title>
+      </Head>
       <div
         className="flex w-full min-h-[90vh] items-center flex-col mt-[40px]"
       >

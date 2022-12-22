@@ -37,8 +37,8 @@ export function Navigation() {
     const tabsElement = document.querySelectorAll('.tab')
     const tabs = Array.from(tabsElement)
 
-    tabs.map(tab => Number(tab.ariaColIndex) == index ? 
-    tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
+    tabs.map(tab => Number(tab.ariaColIndex) == index ?
+      tab.classList.add("text-nav-active") : tab.classList.remove("text-nav-active"))
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="w-full mb-[48px]">
+      <nav className="w-full mb-[60px]">
 
         <TabsUnstyled defaultValue={0}>
 
@@ -74,10 +74,14 @@ export function Navigation() {
             </TabUnstyled>
 
             <TabUnstyled className="tab" aria-colindex={3}>
-              Sobremesas
+              Combos
             </TabUnstyled>
 
             <TabUnstyled className="tab" aria-colindex={4}>
+              Sobremesas
+            </TabUnstyled>
+
+            <TabUnstyled className="tab" aria-colindex={5}>
               Bebidas
             </TabUnstyled>
           </Tabs>
@@ -92,13 +96,7 @@ export function Navigation() {
           >
             {/* Guia "TODOS" */}
             <TabPanel value={value} index={0}>
-              {
-                data.map((section: SectionProps) => {
-                  return section.name == "lanches" && (
-                    section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
-                  )
-                })
-              }
+              <h2 className='namesInAll'>Café da manhã</h2>
               {
                 data.map((section: SectionProps) => {
                   return section.name == "cafe manha" && (
@@ -106,6 +104,26 @@ export function Navigation() {
                   )
                 })
               }
+
+              <h2 className='namesInAll'>Lanches</h2>
+              {
+                data.map((section: SectionProps) => {
+                  return section.name == "lanches" && (
+                    section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
+                  )
+                })
+              }
+
+              <h2 className='namesInAll'>Combos</h2>
+              {
+                data.map((section: SectionProps) => {
+                  return section.name == "combos" && (
+                    section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
+                  )
+                })
+              }
+
+              <h2 className='namesInAll'>Sobremesas</h2>
               {
                 data.map((section: SectionProps) => {
                   return section.name == "sobremesas" && (
@@ -113,6 +131,8 @@ export function Navigation() {
                   )
                 })
               }
+
+              <h2 className='namesInAll'>Bebidas</h2>
               {
                 data.map((section: SectionProps) => {
                   return section.name == "bebidas" && (
@@ -144,8 +164,19 @@ export function Navigation() {
               }
             </TabPanel>
 
-            {/* Guia "SOBREMESAS" */}
+            {/* Guia "COMBOS" */}
             <TabPanel value={value} index={3}>
+              {
+                data.map((section: SectionProps) => {
+                  return section.name == "combos" && (
+                    section.content.map((contentItem) => <Card key={contentItem.id} sectionId={section.id} item={contentItem} />)
+                  )
+                })
+              }
+            </TabPanel>
+
+            {/* Guia "SOBREMESAS" */}
+            <TabPanel value={value} index={4}>
               {
                 data.map((section: SectionProps) => {
                   return section.name == "sobremesas" && (
@@ -156,7 +187,7 @@ export function Navigation() {
             </TabPanel>
 
             {/* Guia "BEBIDAS" */}
-            <TabPanel value={value} index={4}>
+            <TabPanel value={value} index={5}>
               {
                 data.map((section: SectionProps) => {
                   return section.name == "bebidas" && (
@@ -165,10 +196,10 @@ export function Navigation() {
                 })
               }
             </TabPanel>
-            
+
           </SwipeableViews>
         </TabsUnstyled>
-      </nav >
+      </nav>
       <Total />
     </>
 

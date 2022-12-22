@@ -25,6 +25,7 @@ module.exports = {
         'nav': '#00000080', // 50%
         'nav-active': '#8E3200',
         'subtitle': '#8E3200',
+        'alert-title': '#8E3200',
         'total': '#8E3200',
         'title-color': '#000000cc', // 80%
         'item-description': '#000000cc', // 80%
