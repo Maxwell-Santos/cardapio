@@ -63,10 +63,11 @@ export default function Administration() {
                 ))
               }
             </ul>
+            
           ) : (
 
               <div
-                className="flex flex-wrap gap-3 justify-center p-5 w-screen min-h-screen"
+                className="flex gap-3 justify-center p-5 w-screen min-h-screen"
               >
                 <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />
                 <Skeleton className="skeleton-adm" variant="rectangular" animation="wave" />

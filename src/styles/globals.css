@@ -42,7 +42,7 @@
   }
 
   .skeleton-adm{
-    @apply rounded-lg block w-full h-[400px] max-w-[350px]
+    @apply rounded-lg block w-full h-[100px] max-w-[350px]
   }
 
   .comments{
