@@ -36,7 +36,7 @@ export function Card({ sectionId, item }: CardProps) {
   return (
 
     <div className={`w-full flex-1 rounded-md flex my-2 transition-all border-black h-32 overflow-hidden ease-out
-    ${existsItem ? "bg-disable" : "bg-item-card shadow-sm md:hover:shadow-md hover:-translate-y-1"}`}>
+    ${existsItem ? "bg-disable" : "bg-item-card shadow-sm md:hover:shadow-md"}`}>
 
       <Link href={`/itemInfo/${sectionId}?id=${item.id}`} className="flex-1">
 

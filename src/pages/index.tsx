@@ -5,7 +5,7 @@ import { Navigation } from "../components/Navigation";
 
 export default function Home() {
 
-  useEffect(() => {localStorage.clear()},[])
+  // useEffect(() => {localStorage.clear()},[])
   return (
     <>
       <Head>

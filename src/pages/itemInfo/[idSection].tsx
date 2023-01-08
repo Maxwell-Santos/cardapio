@@ -52,7 +52,7 @@ export default function ItemInfo() {
         <title>{`${foundedItem?.name} ${foundedItem?.count}x`}</title>
       </Head>
 
-      <div className="w-screen h-screen flex justify-center">
+      <div className="w-screen min-h-screen flex justify-center">
         <div
           className="w-full max-w-[500px] 
           flex-1 pb-5

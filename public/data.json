@@ -120,7 +120,7 @@
         "img": "https://blog.castellmaq.com.br/wp-content/uploads/2022/01/post_6-ideias-de-combos-de-lanches-para-alavancar-suas-vendas_blog_castellmaq_texto_02.jpg"
       },
       {
-        "id": "3c",
+        "id": "4c",
         "name": "Combo 'deixa que eu pago a conta'",
         "price": 15.00,
         "info": "Acompanha um hamburger e bata-frita",
@@ -145,7 +145,7 @@
         "id": "7b",
         "name": "Suco de morango",
         "price": 6.00,
-        "info": "Esse é bom demais, mas não vai vir cheio de morango assim é só o copo com suco ok.",
+        "info": "Esse é bom demais, mas não vai vir cheio de morango assim, é só o copo com suco ok.",
         "count": 1,
         "img": "http://www.pantuccirestaurante.com.br/wp-content/uploads/2018/08/Os-Beneficios-do-Suco-de-Morango-Para-Saude-pantucci-trattoria.jpg"
       },
@@ -158,7 +158,7 @@
         "img": "https://img.cybercook.com.br/receitas/612/suco-de-uva-natural.jpeg"
       },
       {
-        "id": "8b",
+        "id": "9b",
         "name": "Suco de laranja",
         "price": 6.00,
         "info": "Suco de laranja",

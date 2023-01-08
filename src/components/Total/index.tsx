@@ -57,8 +57,8 @@ export function Total({ inRequests }: TotalProps) {
   }
 
   return (
-    <div
-      className="flex justify-around px-4 py-3 fixed bottom-0 left-0 right-0 w-full bg-primary/50 backdrop-blur-md items-center max-w-[900px] mx-auto"
+    <footer
+      className="flex justify-around px-4 py-3 fixed bottom-0 left-0 right-0 w-full bg-primary items-center max-w-[900px] mx-auto z-50"
     >
       <span
         className="text-total flex-1 md:text-lg"
@@ -93,6 +93,6 @@ export function Total({ inRequests }: TotalProps) {
           </Link>
         )
       }
-    </div>
+    </footer>
   )
 }

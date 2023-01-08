@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <header
-      className="w-full p-5
+      className="w-full p-5 pb-0
       flex items-center justify-between"
     >
       <h1
@@ -22,7 +22,9 @@ export function Header() {
         </Link>
       </h1>
 
-      <Link href={"/requests"}>
+      <Link 
+      href={"/requests"}
+      >
         <Badge
           badgeContent={cart.length}
           color="primary"
