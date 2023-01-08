@@ -7,7 +7,7 @@
         "id": "1l",
         "name": "X-Burguer",
         "price": 10.00,
-        "info": "lanche delicioso de hambúrguer",
+        "info": "Lanche delicioso de hambúrguer",
         "count": 1,
         "img": "https://hridiomas.com.br/wp-content/uploads/destaque-321.jpg"
       },
@@ -15,7 +15,7 @@
         "id": "2l",
         "name": "X-Salada",
         "price": 10.00,
-        "info": "lanche delicioso quase menos calórico",
+        "info": "Lanche delicioso quase menos calórico",
         "count": 1,
         "img": "https://i.pinimg.com/originals/41/14/28/411428a3c234400471acdae7535bc14e.jpg"
       },
@@ -23,7 +23,7 @@
         "id": "3l",
         "name": "X-Chicken",
         "price": 10.00,
-        "info": "lanche delicioso de carne branca, famoso frangão",
+        "info": "Lanche delicioso de carne branca, famoso frangão",
         "count": 1,
         "img": "https://brtakeout.com/wp-content/uploads/x-chicken.png"
       },
@@ -31,7 +31,7 @@
         "id": "4l",
         "name": "X-Bacon",
         "price": 18.00,
-        "info": "lanche com hamburger e bacon, bacon é sempre bem vindo, menos para os vegetarianos, ai vai só salada mesmo",
+        "info": "Lanche com hamburger e bacon, bacon é sempre bem vindo, menos para os vegetarianos, ai vai só salada mesmo",
         "count": 1,
         "img": "https://embutidosbonatti.ind.br/temp/xxx-57-1920x1080m1.jpg"
       }
@@ -45,7 +45,7 @@
         "id": "1cm",
         "name": "Pão na chapa",
         "price": 3.00,
-        "info": "pãozinho na chapa bom, que não gosta nem é gente",
+        "info": "Pãozinho na chapa bom, que não gosta nem é gente",
         "count": 1,
         "img": "https://riomarfortalezaonline.com.br/fortalezashopping/2022/04/pao-na-chapa.png"
       },
@@ -53,7 +53,7 @@
         "id": "2cm",
         "name": "Café com leite",
         "price": 3.00,
-        "info": "cafézinho bom, muita gente chama de pingado por algum motivo? mas ",
+        "info": "Cafézinho bom, muita gente chama de pingado por algum motivo? mas ",
         "count": 1,
         "img": "https://tudodereceitas.com.br/wp-content/uploads/2022/08/Cafe-com-leite-cremoso.jpg"
       },
@@ -61,7 +61,7 @@
         "id": "3cm",
         "name": "Pão de queijo",
         "price": 3.00,
-        "info": "pãozinho de queijo bom demais, pão com queijo... tem como ficar melhor?",
+        "info": "Pãozinho de queijo bom demais, pão com queijo... tem como ficar melhor?",
         "count": 1,
         "img": "https://essareceitafunciona.com.br/wp-content/uploads/2022/07/Pao-de-queijo-Essa-Receita-Funciona-9.jpg"
       },

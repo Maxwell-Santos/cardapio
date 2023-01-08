@@ -12,6 +12,7 @@ export function CartProvider({ children }: any) {
   const [total, setTotal] = useState<string | number>(0)
   const [comments, setComment] = useState<string>("")
 
+
   const handleComment = (comment: string) => {
     setComment(comment)
   }
@@ -83,7 +84,6 @@ export function CartProvider({ children }: any) {
         if(withoutRequestsPage){
           product.count = 1
           cart.splice(index, 1)
-          console.log("de dentro da fn remover", cart)
 
           const item = localStorage.getItem("dataCart")
           if (item) {
@@ -121,10 +121,12 @@ export function CartProvider({ children }: any) {
                 cartParsed.map((locaItem: ItemProps, index: number) => {
                   if (locaItem.id == id)
                     cartParsed.splice(index, 1)
+                    localStorage.setItem('dataCart', JSON.stringify(cartParsed))
                 })
               }
+              history.back()
             }
-            getTotal()
+              getTotal()
           })
         }
       }
@@ -176,9 +178,6 @@ export function CartProvider({ children }: any) {
     if (total > 0) {
       localStorage.setItem('dataCart', JSON.stringify(cart))
       localStorage.setItem('dataTotal', JSON.stringify(total))
-
-      // console.log(localStorage.getItem("dataCart"))
-      // console.log(localStorage.getItem("dataTotal"))
     }
   }, [cart, total])
 

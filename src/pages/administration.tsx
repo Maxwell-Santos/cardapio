@@ -48,17 +48,22 @@ export default function Administration() {
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
       <h1
-        className="mx-auto text-xl text-center block w-fit pt-10"
+        className="mx-auto text-2xl text-center block w-fit pt-10"
       >
         Administração de pedidos
       </h1>
 
-      <div className="w-full flex items-center sm:items-start flex-wrap gap-5 p-6">
+      <div className="w-full flex items-center flex-col p-6">
         {
-          list.length > 0 ?
-          list.reverse().map((order: OrderProps, index: number) => (
-              <RequestBody key={index} order={order} />
-            )) : (
+          list.length > 0 ? (
+            <ul className="mx-auto max-w-[800px] flex flex-col-reverse">
+              {
+                list.reverse().map((order: OrderProps, index: number) => (
+                  <RequestBody key={index} order={order} />
+                ))
+              }
+            </ul>
+          ) : (
 
               <div
                 className="flex flex-wrap gap-3 justify-center p-5 w-screen min-h-screen"

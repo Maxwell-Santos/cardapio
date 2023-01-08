@@ -22,7 +22,7 @@ export default function ItemInfo() {
     cart,
     increase,
     reduction,
-    removeFromCart
+    removeFromCart,
   } = useContext<CartContextProps>(CartContext)
 
 
@@ -56,8 +56,8 @@ export default function ItemInfo() {
         <div
           className="w-full max-w-[500px] 
           flex-1 pb-5
-          flex flex-col relative
-      ">
+          flex flex-col relative"
+        >
           <button
             className="back-button absolute"
             onClick={() => history.back()}
@@ -81,7 +81,7 @@ export default function ItemInfo() {
                   <h1>
                     {foundedItem.name}
                   </h1>
-                  <p>
+                  <p className="mb-3 first-letter:uppercase">
                     {foundedItem.info}
                   </p>
                   <span
@@ -91,7 +91,7 @@ export default function ItemInfo() {
                 </div>
 
                 {/*button actions  */}
-                <div className="flex justify-between gap-5 w-full mt-auto px-3">
+                <div className="flex justify-between flex-row-reverse gap-5 w-full mt-auto px-3">
 
                   {
                     !hasOrdered ? (
@@ -115,17 +115,17 @@ export default function ItemInfo() {
                             className={`${foundedItem && foundedItem.count <= 1 ?
                               "bg-button-primary-disable pointer-events-none " :
                               "bg-button-primary"}
-                              p-2 rounded-full text-button-primary`}
+                              p-1 px-8 rounded-xl text-button-primary text-2xl`}
 
                             onClick={() => { reduction(foundedItem.id) }}
                           >-</button>
 
-                          <div className="w-5 text-center">
+                          <div className="w-5 text-center text-xl">
                             <span>{foundedItem.count}</span>
                           </div>
 
                           <button
-                            className="p-2 bg-button-primary rounded-full text-button-primary"
+                            className="p-1 px-8 bg-button-primary rounded-xl text-button-primary text-2xl"
                             onClick={() => { increase(foundedItem.id) }}
                           >+</button>
                         </div>
@@ -133,10 +133,9 @@ export default function ItemInfo() {
                           className="text-icon p-2 rounded-full hover:bg-[#b61010fd] hover:text-white transition-all"
                           onClick={() => {
                             removeFromCart(String(id))
-                            history.back()
                           }}
                         >
-                          <DeleteOutlineRoundedIcon fontSize='medium'/>
+                          <DeleteOutlineRoundedIcon fontSize='medium' />
                         </button>
                       </>
 
