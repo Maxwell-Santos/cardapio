@@ -22,14 +22,14 @@ export function RequestBody({ order }: RequestBodyProps) {
   return (
 
     <Accordion
-      className="w-full mb-3 p-5 flex flex-col justify-between bg-item-card rounded-lg shadow-sm before:hidden"
+      className="w-full mb-3 p-2 sm:p-5 flex flex-col justify-between bg-item-card rounded-lg shadow-sm before:hidden min-[430px]:p-0"
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         className="w-full"
       >
-        <div className="flex items-center justify-between w-full text-start">
+        <div className="flex flex-col items-center justify-between gap-2 w-full min-[430px]:flex-row">
           <span
             className="p-1 px-3 rounded-full bg-date text-white tracking-wide font-light"
           >
@@ -77,11 +77,11 @@ export function RequestBody({ order }: RequestBodyProps) {
         </p>
 
         <div
-          className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 py-2"
+          className="w-full flex items-center justify-between gap-2 py-2"
         >
 
           <button
-            className="bg-button-primary hover:bg-button-primary-onclick focus:bg-button-primary-onclick p-3 text-button-primary rounded-md flex-1 mt-3"
+            className="bg-button-primary hover:bg-button-primary-onclick focus:bg-button-primary-onclick p-3 text-button-primary rounded-md mt-3 flex-1"
           >
             Pedido Entregue
           </button>
