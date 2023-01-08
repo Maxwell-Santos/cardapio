@@ -49,8 +49,7 @@
     @apply p-4 outline-none appearance-none text-opacity-80 w-full resize-none rounded-lg border-2 border-transparent focus:border-comment-outline text-comment placeholder:text-comment placeholder:opacity-40
     bg-box-comments/10 transition-all
   }
-
-  .t{
-    @apply bg-red-500
+  ul li #accordion {
+    @apply bg-item-card rounded-lg shadow-sm
   }
 }

@@ -22,7 +22,8 @@ export function RequestBody({ order }: RequestBodyProps) {
   return (
 
     <Accordion
-      className="w-full mb-3 p-2 sm:p-5 flex flex-col justify-between bg-item-card rounded-lg shadow-sm before:hidden min-[430px]:p-0"
+      className="w-full mb-3 p-2 sm:p-5 flex flex-col justify-between before:hidden min-[430px]:p-0"
+      id="accordion"
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
