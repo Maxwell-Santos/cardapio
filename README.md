@@ -1,3 +1,17 @@
+## Tecnologias
+
+- NextJS
+- Tailwind
+- Mongodb
+- Mongodb Atlas - armazenamento em nuvem
+- Mongoose - manipulação de banco de dados
+- Context API
+- API Routes
+- Material UI
+- Date-fns - formatar datas
+- SweetAlert
+- ReactScroll
+
 ## Motivação
 
 Uma vez eu fui cedo tomar café na padaria, só tinha uma garçonete avisando a cozinha os pedidos, e todas as mesas estavam cheias, e por ser tantos pedidos, a chance de ela esquecer alguma coisa existia. Claro que a pessoa ia lá cobrar depois, mas afim de evitar esse desgaste dos dois lados. Criei esse sistema de pedidos afim de facilitar a comunicação dos clientes com a cozinha.
