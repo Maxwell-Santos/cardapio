@@ -23,10 +23,10 @@
 @layer components{
   .tab{
     @apply text-nav capitalize mx-2 px-3 py-1 rounded-md transition-all cursor-pointer z-50 
-    whitespace-nowrap border-b-2 border-transparent bg-transparent hover:bg-nav/50
+    whitespace-nowrap hover:bg-nav
   }
   .active {
-    @apply bg-nav/50 shadow-sm
+    @apply bg-nav shadow-sm 
   }
   .namesInAll{
     @apply mt-6 ml-2 text-2xl first:mt-0

@@ -16,7 +16,7 @@ export default function Home() {
       <div className="w-screen flex justify-center">
         <div className="w-full max-w-[900px]">
           <Header />
-          <main>
+          <main className="mb-20">
             <Navigation />
           </main>
         </div>

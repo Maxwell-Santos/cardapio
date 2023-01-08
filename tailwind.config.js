@@ -44,7 +44,7 @@ module.exports = {
         'box-comments': '#8e32008f',
         'button-primary-onclick': '#81350b',
         'item-card': '#ffffff4d', // 30%
-        'nav': '#D7A86E',
+        'nav': '#be734b5d',
       },
 
       borderColor: {
