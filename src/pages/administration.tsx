@@ -59,7 +59,7 @@ export default function Administration() {
             <ul className="mx-auto max-w-[800px] flex flex-col-reverse">
               {
                 list.reverse().map((order: OrderProps, index: number) => (
-                  <RequestBody key={index} order={order} />
+                  <li><RequestBody key={index} order={order} /></li>
                 ))
               }
             </ul>
